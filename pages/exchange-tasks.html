@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 兑换任务</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='task-center.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">兑换任务</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-shopping-cart text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 积分信息 -->
+        <div class="card mt-[16px]">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-[16px] font-medium mb-[2px]">我的积分</h2>
+                    <p class="text-[12px] text-[#6B7280]">可用于兑换各种学习资源和权益</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-[24px] font-bold text-[#2563EB]" id="user-points">500</p>
+                    <button class="text-[12px] text-[#3B82F6]" onclick="window.location.href='points-exchange.html'">
+                        积分明细 <i class="fa fa-arrow-right ml-[2px]"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 兑换说明 -->
+        <div class="card mt-[16px]">
+            <div class="flex items-start gap-[12px]">
+                <i class="fa fa-info-circle text-[#3B82F6] mt-[2px]"></i>
+                <div class="flex-1">
+                    <h2 class="text-[14px] font-medium mb-[4px]">兑换规则</h2>
+                    <p class="text-[12px] text-[#6B7280]">1. 兑换后积分将立即扣除，不可退还<br>2. 兑换的资料/权益将发放到您的账户<br>3. 部分商品有库存限制，请尽快兑换</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 兑换商品列表 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">可兑换商品</h2>
+            <div class="space-y-[12px]">
+                <!-- 商品项1：学习套餐 -->
+                <div class="card">
+                    <div class="flex items-start gap-[12px]">
+                        <div class="w-[80px] h-[80px] bg-[#EFF6FF] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <i class="fa fa-book-open text-[#2563EB] text-[40px]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-[4px]">
+                                <h3 class="text-[16px] font-medium">学习套餐</h3>
+                                <div class="text-[12px] text-[#10B981]">
+                                    <i class="fa fa-coins mr-[2px]"></i>200
+                                </div>
+                            </div>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[8px]">包含10份精选学习资料和学习计划</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[12px] text-[#6B7280]">库存：<span class="exchange-stock" data-item="package">15</span></span>
+                                <button class="exchange-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-item="package" data-points="200">
+                                    立即兑换
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 商品项2：学长答疑权限 -->
+                <div class="card">
+                    <div class="flex items-start gap-[12px]">
+                        <div class="w-[80px] h-[80px] bg-[#D1FAE5] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <i class="fa fa-question-circle text-[#10B981] text-[40px]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-[4px]">
+                                <h3 class="text-[16px] font-medium">学长答疑权限</h3>
+                                <div class="text-[12px] text-[#10B981]">
+                                    <i class="fa fa-coins mr-[2px]"></i>500
+                                </div>
+                            </div>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[8px]">获得5次向学长提问的机会，24小时内回复</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[12px] text-[#6B7280]">库存：<span class="exchange-stock" data-item="mentor">8</span></span>
+                                <button class="exchange-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-item="mentor" data-points="500">
+                                    立即兑换
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 商品项3：考前应急资料 -->
+                <div class="card">
+                    <div class="flex items-start gap-[12px]">
+                        <div class="w-[80px] h-[80px] bg-[#FEF3C7] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <i class="fa fa-fire text-[#F59E0B] text-[40px]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-[4px]">
+                                <h3 class="text-[16px] font-medium">考前应急资料</h3>
+                                <div class="text-[12px] text-[#10B981]">
+                                    <i class="fa fa-coins mr-[2px]"></i>300
+                                </div>
+                            </div>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[8px]">包含历年真题和考点预测，助你快速备考</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[12px] text-[#6B7280]">库存：<span class="exchange-stock" data-item="emergency">25</span></span>
+                                <button class="exchange-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-item="emergency" data-points="300">
+                                    立即兑换
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 商品项4：VIP会员 -->
+                <div class="card">
+                    <div class="flex items-start gap-[12px]">
+                        <div class="w-[80px] h-[80px] bg-[#FEE2E2] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <i class="fa fa-crown text-[#EF4444] text-[40px]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-[4px]">
+                                <h3 class="text-[16px] font-medium">VIP会员</h3>
+                                <div class="text-[12px] text-[#10B981]">
+                                    <i class="fa fa-coins mr-[2px]"></i>800
+                                </div>
+                            </div>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[8px]">30天VIP会员，享受所有付费资料免费下载</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[12px] text-[#6B7280]">库存：<span class="exchange-stock" data-item="vip">5</span></span>
+                                <button class="exchange-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-item="vip" data-points="800">
+                                    立即兑换
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 商品项5：定制学习计划 -->
+                <div class="card">
+                    <div class="flex items-start gap-[12px]">
+                        <div class="w-[80px] h-[80px] bg-[#F3E8FF] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <i class="fa fa-calendar-check text-[#8B5CF6] text-[40px]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-[4px]">
+                                <h3 class="text-[16px] font-medium">定制学习计划</h3>
+                                <div class="text-[12px] text-[#10B981]">
+                                    <i class="fa fa-coins mr-[2px]"></i>600
+                                </div>
+                            </div>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[8px]">根据你的学习目标制定个性化学习计划</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-[12px] text-[#6B7280]">库存：<span class="exchange-stock" data-item="plan">10</span></span>
+                                <button class="exchange-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-item="plan" data-points="600">
+                                    立即兑换
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部Tab栏 -->
+    <footer>
+        <div class="tabbar">
+            <!-- 首页 -->
+            <div class="tabbar-item inactive" data-page="home">
+                <i class="fa fa-home text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">首页</span>
+            </div>
+            
+            <!-- 找资料 -->
+            <div class="tabbar-item inactive" data-page="search">
+                <i class="fa fa-search text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">找资料</span>
+            </div>
+            
+            <!-- 互助 -->
+            <div class="tabbar-item inactive" data-page="exchange">
+                <i class="fa fa-exchange-alt text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">互助</span>
+            </div>
+            
+            <!-- 备考 -->
+            <div class="tabbar-item inactive" data-page="exam">
+                <i class="fa fa-pen-fancy text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">备考</span>
+            </div>
+            
+            <!-- 我的 -->
+            <div class="tabbar-item active" data-page="profile">
+                <i class="fa fa-user text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">我的</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页面特定JavaScript -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 商品库存数据
+            let exchangeItems = {
+                package: {
+                    name: "学习套餐",
+                    points: 200,
+                    stock: 15,
+                    description: "包含10份精选学习资料和学习计划"
+                },
+                mentor: {
+                    name: "学长答疑权限",
+                    points: 500,
+                    stock: 8,
+                    description: "获得5次向学长提问的机会，24小时内回复"
+                },
+                emergency: {
+                    name: "考前应急资料",
+                    points: 300,
+                    stock: 25,
+                    description: "包含历年真题和考点预测，助你快速备考"
+                },
+                vip: {
+                    name: "VIP会员",
+                    points: 800,
+                    stock: 5,
+                    description: "30天VIP会员，享受所有付费资料免费下载"
+                },
+                plan: {
+                    name: "定制学习计划",
+                    points: 600,
+                    stock: 10,
+                    description: "根据你的学习目标制定个性化学习计划"
+                }
+            };
+            
+            // 用户积分
+            let userPoints = 500;
+            
+            // 从localStorage加载数据
+            function loadData() {
+                // 加载商品库存
+                const savedItems = localStorage.getItem('exchangeItems');
+                if (savedItems) {
+                    exchangeItems = JSON.parse(savedItems);
+                }
+                
+                // 加载用户积分
+                const savedPoints = localStorage.getItem('userPoints');
+                if (savedPoints) {
+                    userPoints = parseInt(savedPoints);
+                }
+                
+                // 更新页面显示
+                updatePage();
+            }
+            
+            // 保存数据到localStorage
+            function saveData() {
+                localStorage.setItem('exchangeItems', JSON.stringify(exchangeItems));
+                localStorage.setItem('userPoints', userPoints.toString());
+            }
+            
+            // 更新页面显示
+            function updatePage() {
+                // 更新用户积分
+                document.getElementById('user-points').textContent = userPoints;
+                
+                // 更新商品库存和按钮状态
+                for (const [itemId, item] of Object.entries(exchangeItems)) {
+                    // 更新库存显示
+                    const stockElement = document.querySelector(`.exchange-stock[data-item="${itemId}"]`);
+                    if (stockElement) {
+                        stockElement.textContent = item.stock;
+                    }
+                    
+                    // 更新按钮状态
+                    const buttonElement = document.querySelector(`.exchange-btn[data-item="${itemId}"]`);
+                    if (buttonElement) {
+                        if (item.stock <= 0) {
+                            buttonElement.textContent = "已售罄";
+                            buttonElement.className = "exchange-btn px-[12px] py-[4px] bg-[#D1D5DB] text-white text-[12px] rounded-full";
+                            buttonElement.disabled = true;
+                        } else if (userPoints < item.points) {
+                            buttonElement.textContent = "积分不足";
+                            buttonElement.className = "exchange-btn px-[12px] py-[4px] bg-[#F3F4F6] text-[#9CA3AF] text-[12px] rounded-full";
+                            buttonElement.disabled = true;
+                        } else {
+                            buttonElement.textContent = "立即兑换";
+                            buttonElement.className = "exchange-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full";
+                            buttonElement.disabled = false;
+                        }
+                    }
+                }
+            }
+            
+            // 兑换按钮点击事件
+            const exchangeButtons = document.querySelectorAll('.exchange-btn');
+            exchangeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = this.dataset.item;
+                    const item = exchangeItems[itemId];
+                    
+                    // 检查库存和积分
+                    if (item.stock <= 0) {
+                        alert("该商品已售罄");
+                        return;
+                    }
+                    
+                    if (userPoints < item.points) {
+                        alert("积分不足，无法兑换");
+                        return;
+                    }
+                    
+                    // 确认兑换
+                    if (confirm(`确定要消耗 ${item.points} 积分兑换「${item.name}」吗？`)) {
+                        // 扣除积分
+                        userPoints -= item.points;
+                        
+                        // 减少库存
+                        item.stock--;
+                        
+                        // 保存数据
+                        saveData();
+                        
+                        // 更新页面
+                        updatePage();
+                        
+                        // 显示兑换成功
+                        alert(`兑换成功！\n已获得：${item.name}\n消耗积分：${item.points}\n剩余积分：${userPoints}`);
+                        
+                        // 控制台输出（用于后续对接后端）
+                        console.log(`兑换商品：${itemId}，名称：${item.name}，消耗积分：${item.points}`);
+                    }
+                });
+            });
+            
+            // 初始化页面
+            loadData();
+        });
+    </script>
+</body>
+</html>

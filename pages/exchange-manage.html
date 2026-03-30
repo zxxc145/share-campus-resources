@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 交换请求处理</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">交换请求管理</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-filter text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- Tab切换 -->
+        <div class="flex border-b border-[#E5E7EB] mt-[16px]">
+            <button class="tab-btn active flex-1 py-[12px] text-center text-[16px] font-medium text-[#2563EB] border-b-2 border-[#2563EB] transition-all duration-200" data-tab="received">收到的请求</button>
+            <button class="tab-btn flex-1 py-[12px] text-center text-[16px] font-medium text-[#9CA3AF] transition-all duration-200" data-tab="sent">发出的请求</button>
+        </div>
+        
+        <!-- 收到的请求列表 -->
+        <div class="tab-content active space-y-[16px] mt-[16px]" id="received-list">
+            <!-- 请求项1 -->
+            <div class="card request-item" data-status="pending">
+                <div class="flex items-center justify-between mb-[12px]">
+                    <span class="status-badge text-[12px] px-[6px] py-[2px] bg-[#FEF3C7] text-[#F59E0B] rounded-full">待处理</span>
+                    <span class="text-[12px] text-[#9CA3AF]">2023-11-20 15:30</span>
+                </div>
+                
+                <div class="flex gap-[12px]">
+                    <div class="w-[60px] h-[60px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1">
+                        <h3 class="text-[16px] font-medium mb-[4px]">计算机网络教材</h3>
+                        <p class="text-[12px] text-[#9CA3AF] mb-[8px]">来自：李四</p>
+                        <div class="text-[12px] text-[#4B5563] mb-[12px]">
+                            <span class="font-medium">交换请求：</span>
+                            用高等数学下册交换计算机网络教材
+                        </div>
+                        <div class="action-buttons flex items-center gap-[8px]">
+                            <button class="accept-btn flex-1 py-[8px] bg-[#D1FAE5] text-[#10B981] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#A7F3D0] active:bg-[#34D399]">接受</button>
+                            <button class="reject-btn flex-1 py-[8px] bg-[#FEE2E2] text-[#EF4444] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#FECACA] active:bg-[#F87171]">拒绝</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 请求项2 -->
+            <div class="card request-item" data-status="accepted">
+                <div class="flex items-center justify-between mb-[12px]">
+                    <span class="status-badge text-[12px] px-[6px] py-[2px] bg-[#D1FAE5] text-[#10B981] rounded-full">已接受</span>
+                    <span class="text-[12px] text-[#9CA3AF]">2023-11-18 10:20</span>
+                </div>
+                
+                <div class="flex gap-[12px]">
+                    <div class="w-[60px] h-[60px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1">
+                        <h3 class="text-[16px] font-medium mb-[4px]">大学英语四级词汇</h3>
+                        <p class="text-[12px] text-[#9CA3AF] mb-[8px]">来自：王五</p>
+                        <div class="text-[12px] text-[#4B5563] mb-[12px]">
+                            <span class="font-medium">交换请求：</span>
+                            用大学语文交换大学英语四级词汇
+                        </div>
+                        <button class="detail-btn w-full py-[8px] bg-[#EFF6FF] text-[#2563EB] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#DBEAFE] active:bg-[#93C5FD]">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 发出的请求列表 -->
+        <div class="tab-content hidden space-y-[16px] mt-[16px]" id="sent-list">
+            <!-- 请求项1 -->
+            <div class="card request-item" data-status="pending">
+                <div class="flex items-center justify-between mb-[12px]">
+                    <span class="status-badge text-[12px] px-[6px] py-[2px] bg-[#FEF3C7] text-[#F59E0B] rounded-full">待处理</span>
+                    <span class="text-[12px] text-[#9CA3AF]">2023-11-19 09:45</span>
+                </div>
+                
+                <div class="flex gap-[12px]">
+                    <div class="w-[60px] h-[60px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1">
+                        <h3 class="text-[16px] font-medium mb-[4px]">高等数学下册</h3>
+                        <p class="text-[12px] text-[#9CA3AF] mb-[8px]">请求对象：张三</p>
+                        <div class="text-[12px] text-[#4B5563] mb-[12px]">
+                            <span class="font-medium">交换请求：</span>
+                            用高等数学下册交换大学英语四级词汇
+                        </div>
+                        <div class="action-buttons flex items-center gap-[8px]">
+                            <button class="cancel-btn flex-1 py-[8px] bg-[#FEE2E2] text-[#EF4444] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#FECACA] active:bg-[#F87171]">取消请求</button>
+                            <button class="detail-btn flex-1 py-[8px] bg-[#EFF6FF] text-[#2563EB] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#DBEAFE] active:bg-[#93C5FD]">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 请求项2 -->
+            <div class="card request-item" data-status="rejected">
+                <div class="flex items-center justify-between mb-[12px]">
+                    <span class="status-badge text-[12px] px-[6px] py-[2px] bg-[#FEE2E2] text-[#EF4444] rounded-full">已拒绝</span>
+                    <span class="text-[12px] text-[#9CA3AF]">2023-11-17 14:20</span>
+                </div>
+                
+                <div class="flex gap-[12px]">
+                    <div class="w-[60px] h-[60px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1">
+                        <h3 class="text-[16px] font-medium mb-[4px]">大学语文</h3>
+                        <p class="text-[12px] text-[#9CA3AF] mb-[8px]">请求对象：赵四</p>
+                        <div class="text-[12px] text-[#4B5563] mb-[12px]">
+                            <span class="font-medium">交换请求：</span>
+                            用大学语文交换计算机组成原理
+                        </div>
+                        <button class="detail-btn w-full py-[8px] bg-[#EFF6FF] text-[#2563EB] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#DBEAFE] active:bg-[#93C5FD]">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 空状态（当没有请求时显示） -->
+        <div class="hidden flex flex-col items-center justify-center pt-[80px]">
+            <div class="w-[120px] h-[120px] bg-[#F3F4F6] rounded-full flex items-center justify-center mb-[16px]">
+                <i class="fa fa-exchange-alt text-[#9CA3AF] text-[60px]"></i>
+            </div>
+            <h3 class="text-[16px] font-medium mb-[8px]">暂无交换请求</h3>
+            <p class="text-[14px] text-[#9CA3AF] mb-[24px]">快去发起或等待他人的交换请求吧</p>
+            <button class="btn-primary" onclick="window.location.href='exchange.html'">
+                去发起交换
+            </button>
+        </div>
+    </main>
+
+    <!-- 底部Tab栏 -->
+    <footer>
+        <div class="tabbar">
+            <!-- 首页 -->
+            <div class="tabbar-item inactive" data-page="home">
+                <i class="fa fa-home text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">首页</span>
+            </div>
+            
+            <!-- 找资料 -->
+            <div class="tabbar-item inactive" data-page="search">
+                <i class="fa fa-search text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">找资料</span>
+            </div>
+            
+            <!-- 互助 -->
+            <div class="tabbar-item active" data-page="exchange">
+                <i class="fa fa-exchange-alt text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">互助</span>
+            </div>
+            
+            <!-- 备考 -->
+            <div class="tabbar-item inactive" data-page="exam">
+                <i class="fa fa-pen-fancy text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">备考</span>
+            </div>
+            
+            <!-- 我的 -->
+            <div class="tabbar-item inactive" data-page="profile">
+                <i class="fa fa-user text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">我的</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 页面特定JavaScript -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // ------------------------
+            // Tab切换功能
+            // ------------------------
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 获取当前tab的ID
+                    const tabId = this.dataset.tab;
+                    
+                    // 移除所有tab按钮的选中状态
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'text-[#2563EB]', 'border-b-2', 'border-[#2563EB]');
+                        btn.classList.add('text-[#9CA3AF]');
+                    });
+                    
+                    // 为当前tab按钮添加选中状态
+                    this.classList.add('active', 'text-[#2563EB]', 'border-b-2', 'border-[#2563EB]');
+                    this.classList.remove('text-[#9CA3AF]');
+                    
+                    // 隐藏所有tab内容
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        content.classList.add('hidden');
+                    });
+                    
+                    // 显示当前tab对应的内容
+                    const targetContent = document.getElementById(`${tabId}-list`);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
+                        targetContent.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // ------------------------
+            // 接受请求功能
+            // ------------------------
+            const acceptButtons = document.querySelectorAll('.accept-btn');
+            
+            acceptButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 获取当前请求项
+                    const requestItem = this.closest('.request-item');
+                    
+                    // 更新状态
+                    const statusBadge = requestItem.querySelector('.status-badge');
+                    statusBadge.textContent = '已接受';
+                    statusBadge.className = 'status-badge text-[12px] px-[6px] py-[2px] bg-[#D1FAE5] text-[#10B981] rounded-full';
+                    
+                    // 更新请求项的data-status属性
+                    requestItem.dataset.status = 'accepted';
+                    
+                    // 替换按钮为查看详情
+                    const actionButtons = requestItem.querySelector('.action-buttons');
+                    actionButtons.innerHTML = '<button class="detail-btn w-full py-[8px] bg-[#EFF6FF] text-[#2563EB] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#DBEAFE] active:bg-[#93C5FD]">查看详情</button>';
+                    
+                    // 重新绑定查看详情按钮事件
+                    bindDetailButton(actionButtons.querySelector('.detail-btn'));
+                    
+                    // 控制台输出（用于后续对接后端）
+                    console.log('接受请求:', requestItem.querySelector('h3').textContent);
+                });
+            });
+            
+            // ------------------------
+            // 拒绝请求功能
+            // ------------------------
+            const rejectButtons = document.querySelectorAll('.reject-btn');
+            
+            rejectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 弹出确认对话框
+                    if (confirm('确定要拒绝这个交换请求吗？')) {
+                        // 获取当前请求项
+                        const requestItem = this.closest('.request-item');
+                        
+                        // 更新状态
+                        const statusBadge = requestItem.querySelector('.status-badge');
+                        statusBadge.textContent = '已拒绝';
+                        statusBadge.className = 'status-badge text-[12px] px-[6px] py-[2px] bg-[#FEE2E2] text-[#EF4444] rounded-full';
+                        
+                        // 更新请求项的data-status属性
+                        requestItem.dataset.status = 'rejected';
+                        
+                        // 替换按钮为查看详情
+                        const actionButtons = requestItem.querySelector('.action-buttons');
+                        actionButtons.innerHTML = '<button class="detail-btn w-full py-[8px] bg-[#EFF6FF] text-[#2563EB] text-[14px] font-medium rounded-[8px] transition-all duration-200 hover:bg-[#DBEAFE] active:bg-[#93C5FD]">查看详情</button>';
+                        
+                        // 重新绑定查看详情按钮事件
+                        bindDetailButton(actionButtons.querySelector('.detail-btn'));
+                        
+                        // 控制台输出（用于后续对接后端）
+                        console.log('拒绝请求:', requestItem.querySelector('h3').textContent);
+                    }
+                });
+            });
+            
+            // ------------------------
+            // 取消请求功能
+            // ------------------------
+            const cancelButtons = document.querySelectorAll('.cancel-btn');
+            
+            cancelButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 弹出确认对话框
+                    if (confirm('确定要取消这个交换请求吗？')) {
+                        // 获取当前请求项
+                        const requestItem = this.closest('.request-item');
+                        
+                        // 更新状态
+                        const statusBadge = requestItem.querySelector('.status-badge');
+                        statusBadge.textContent = '已取消';
+                        statusBadge.className = 'status-badge text-[12px] px-[6px] py-[2px] bg-[#F3F4F6] text-[#6B7280] rounded-full';
+                        
+                        // 更新请求项的data-status属性
+                        requestItem.dataset.status = 'cancelled';
+                        
+                        // 隐藏取消按钮
+                        const actionButtons = requestItem.querySelector('.action-buttons');
+                        const detailButton = actionButtons.querySelector('.detail-btn');
+                        actionButtons.innerHTML = detailButton.outerHTML;
+                        
+                        // 重新绑定查看详情按钮事件
+                        bindDetailButton(actionButtons.querySelector('.detail-btn'));
+                        
+                        // 控制台输出（用于后续对接后端）
+                        console.log('取消请求:', requestItem.querySelector('h3').textContent);
+                    }
+                });
+            });
+            
+            // ------------------------
+            // 查看详情功能
+            // ------------------------
+            function bindDetailButton(button) {
+                button.addEventListener('click', function() {
+                    // 获取当前请求项
+                    const requestItem = this.closest('.request-item');
+                    const title = requestItem.querySelector('h3').textContent;
+                    const status = requestItem.dataset.status;
+                    const date = requestItem.querySelector('.text-[#9CA3AF]').textContent;
+                    const requestText = requestItem.querySelector('.text-[#4B5563]').textContent;
+                    
+                    // 弹出详情对话框
+                    alert(`交换请求详情：\n\n标题：${title}\n状态：${status === 'pending' ? '待处理' : status === 'accepted' ? '已接受' : status === 'rejected' ? '已拒绝' : '已取消'}\n日期：${date}\n内容：${requestText}`);
+                    
+                    // 控制台输出（用于后续对接后端）
+                    console.log('查看详情:', title);
+                });
+            }
+            
+            // 为所有初始的查看详情按钮绑定事件
+            const initialDetailButtons = document.querySelectorAll('.detail-btn');
+            initialDetailButtons.forEach(button => {
+                bindDetailButton(button);
+            });
+            
+            // ------------------------
+            // 返回按钮功能
+            // ------------------------
+            const backBtn = document.querySelector('.back-btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    // 默认返回上一页
+                    window.history.back();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

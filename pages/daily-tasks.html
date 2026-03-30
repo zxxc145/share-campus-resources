@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 日常任务</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='task-center.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">日常任务</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-calendar text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 签到卡片 -->
+        <div class="card mt-[16px] flex items-center justify-between">
+            <div class="flex items-center gap-[12px]">
+                <div class="w-[50px] h-[50px] bg-gradient-to-r from-[#F59E0B] to-[#FBBF24] rounded-full flex items-center justify-center">
+                    <i class="fa fa-calendar-check text-white"></i>
+                </div>
+                <div>
+                    <h2 class="text-[16px] font-medium mb-[2px]">每日签到</h2>
+                    <p class="text-[12px] text-[#6B7280]">连续签到<span id="continuous-days">0</span>天</p>
+                </div>
+            </div>
+            <button id="sign-in-btn" class="px-[16px] py-[8px] bg-[#F59E0B] text-white rounded-full">
+                <i class="fa fa-calendar-plus mr-[4px]"></i>立即签到
+            </button>
+        </div>
+        
+        <!-- 任务说明 -->
+        <div class="card mt-[16px]">
+            <div class="flex items-start gap-[12px]">
+                <i class="fa fa-info-circle text-[#3B82F6] mt-[2px]"></i>
+                <div class="flex-1">
+                    <h2 class="text-[14px] font-medium mb-[4px]">日常任务规则</h2>
+                    <p class="text-[12px] text-[#6B7280]">每日完成以下任务，获得额外积分奖励，任务每日凌晨0点自动刷新。</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 任务列表 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">今日任务</h2>
+            <div class="space-y-[12px]">
+                <!-- 任务项1：浏览学习资料 -->
+                <div class="card">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="w-[50px] h-[50px] bg-[#EFF6FF] rounded-[8px] flex items-center justify-center">
+                            <i class="fa fa-search text-[#2563EB]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-[16px] font-medium mb-[4px]">浏览学习资料</h3>
+                            <p class="text-[12px] text-[#9CA3AF]">浏览5份不同学习资料</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[12px] text-[#10B981] mb-[4px]">
+                                <i class="fa fa-coins mr-[4px]"></i>50积分
+                            </div>
+                            <button class="task-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-task="browse" data-points="50">
+                                去浏览
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 任务项2：分享资料 -->
+                <div class="card">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="w-[50px] h-[50px] bg-[#D1FAE5] rounded-[8px] flex items-center justify-center">
+                            <i class="fa fa-share-alt text-[#10B981]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-[16px] font-medium mb-[4px]">分享资料</h3>
+                            <p class="text-[12px] text-[#9CA3AF]">分享1份学习资料到社交媒体</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[12px] text-[#10B981] mb-[4px]">
+                                <i class="fa fa-coins mr-[4px]"></i>100积分
+                            </div>
+                            <button class="task-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-task="share" data-points="100">
+                                去分享
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 任务项3：评论资料 -->
+                <div class="card">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="w-[50px] h-[50px] bg-[#FEF3C7] rounded-[8px] flex items-center justify-center">
+                            <i class="fa fa-comment text-[#F59E0B]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-[16px] font-medium mb-[4px]">评论资料</h3>
+                            <p class="text-[12px] text-[#9CA3AF]">对3份学习资料发表评论</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[12px] text-[#10B981] mb-[4px]">
+                                <i class="fa fa-coins mr-[4px]"></i>
+                                80积分
+                            </div>
+                            <button class="task-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-task="comment" data-points="80">
+                                去评论
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 任务项4：上传资料 -->
+                <div class="card">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="w-[50px] h-[50px] bg-[#FEE2E2] rounded-[8px] flex items-center justify-center">
+                            <i class="fa fa-upload text-[#EF4444]"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-[16px] font-medium mb-[4px]">上传资料</h3>
+                            <p class="text-[12px] text-[#9CA3AF]">上传1份原创学习资料</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-[12px] text-[#10B981] mb-[4px]">
+                                <i class="fa fa-coins mr-[4px]"></i>
+                                200积分
+                            </div>
+                            <button class="task-btn px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-full" data-task="upload" data-points="200">
+                                去上传
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部Tab栏 -->
+    <footer>
+        <div class="tabbar">
+            <!-- 首页 -->
+            <div class="tabbar-item inactive" data-page="home">
+                <i class="fa fa-home text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">首页</span>
+            </div>
+            
+            <!-- 找资料 -->
+            <div class="tabbar-item inactive" data-page="search">
+                <i class="fa fa-search text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">找资料</span>
+            </div>
+            
+            <!-- 互助 -->
+            <div class="tabbar-item inactive" data-page="exchange">
+                <i class="fa fa-exchange-alt text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">互助</span>
+            </div>
+            
+            <!-- 备考 -->
+            <div class="tabbar-item inactive" data-page="exam">
+                <i class="fa fa-pen-fancy text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">备考</span>
+            </div>
+            
+            <!-- 我的 -->
+            <div class="tabbar-item active" data-page="profile">
+                <i class="fa fa-user text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">我的</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页面特定JavaScript -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 签到功能实现
+            const signInBtn = document.getElementById('sign-in-btn');
+            const continuousDaysElement = document.getElementById('continuous-days');
+            
+            // 从localStorage获取签到记录
+            const signInRecord = JSON.parse(localStorage.getItem('signInRecord') || '{}');
+            const today = new Date().toDateString();
+            
+            // 更新签到状态
+            function updateSignInStatus() {
+                if (signInRecord[today]) {
+                    signInBtn.innerHTML = '<i class="fa fa-check mr-[4px]"></i>已签到';
+                    signInBtn.className = 'px-[16px] py-[8px] bg-[#10B981] text-white rounded-full';
+                    signInBtn.disabled = true;
+                } else {
+                    signInBtn.innerHTML = '<i class="fa fa-calendar-plus mr-[4px]"></i>立即签到';
+                    signInBtn.className = 'px-[16px] py-[8px] bg-[#F59E0B] text-white rounded-full';
+                    signInBtn.disabled = false;
+                }
+                
+                // 计算连续签到天数
+                calculateContinuousDays();
+            }
+            
+            // 计算连续签到天数
+            function calculateContinuousDays() {
+                let continuousDays = 0;
+                const date = new Date();
+                
+                while (true) {
+                    const dateString = date.toDateString();
+                    if (signInRecord[dateString]) {
+                        continuousDays++;
+                        date.setDate(date.getDate() - 1);
+                    } else {
+                        break;
+                    }
+                }
+                
+                continuousDaysElement.textContent = continuousDays;
+                return continuousDays;
+            }
+            
+            // 签到按钮点击事件
+            signInBtn.addEventListener('click', function() {
+                const today = new Date().toDateString();
+                
+                if (!signInRecord[today]) {
+                    // 标记今日已签到
+                    signInRecord[today] = true;
+                    localStorage.setItem('signInRecord', JSON.stringify(signInRecord));
+                    
+                    // 获取连续签到天数
+                    const continuousDays = calculateContinuousDays() + 1;
+                    
+                    // 根据连续签到天数计算积分
+                    let points = 10;
+                    if (continuousDays >= 5) points = 20;
+                    if (continuousDays >= 10) points = 30;
+                    if (continuousDays >= 30) points = 50;
+                    
+                    // 显示签到成功信息
+                    alert(`签到成功！\n连续签到${continuousDays}天\n获得积分：${points}`);
+                    
+                    // 更新签到状态
+                    updateSignInStatus();
+                    
+                    // 控制台输出（用于后续对接后端）
+                    console.log(`签到成功，连续${continuousDays}天，获得积分：${points}`);
+                }
+            });
+            
+            // 初始化签到状态
+            updateSignInStatus();
+            
+            // 日常任务功能实现
+            const taskButtons = document.querySelectorAll('.task-btn');
+            
+            // 从localStorage获取今日任务完成记录
+            const todayTasks = JSON.parse(localStorage.getItem('todayTasks') || '{}');
+            const lastTaskDate = localStorage.getItem('lastTaskDate');
+            
+            // 检查是否需要刷新任务
+            if (lastTaskDate !== today) {
+                // 重置今日任务记录
+                localStorage.setItem('todayTasks', JSON.stringify({}));
+                localStorage.setItem('lastTaskDate', today);
+            }
+            
+            // 为每个任务按钮添加点击事件
+            taskButtons.forEach(button => {
+                const taskType = button.dataset.task;
+                
+                // 检查任务是否已完成
+                if (todayTasks[taskType]) {
+                    button.textContent = '已完成';
+                    button.className = 'task-btn px-[12px] py-[4px] bg-[#10B981] text-white text-[12px] rounded-full';
+                    button.disabled = true;
+                }
+                
+                button.addEventListener('click', function() {
+                    const points = parseInt(this.dataset.points);
+                    
+                    // 标记任务为已完成
+                    todayTasks[taskType] = true;
+                    localStorage.setItem('todayTasks', JSON.stringify(todayTasks));
+                    
+                    // 更新按钮状态
+                    this.textContent = '已完成';
+                    this.className = 'task-btn px-[12px] py-[4px] bg-[#10B981] text-white text-[12px] rounded-full';
+                    this.disabled = true;
+                    
+                    // 显示任务完成信息
+                    alert(`任务完成！\n获得积分：${points}`);
+                    
+                    // 控制台输出（用于后续对接后端）
+                    console.log(`完成日常任务：${taskType}，获得积分：${points}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

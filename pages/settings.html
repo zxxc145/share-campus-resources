@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 设置</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        /* 图片点击放大功能 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        /* 设置项图标容器 */
+        .setting-icon-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* 版本信息logo容器 */
+        .version-logo-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 640px) {
+            .setting-icon-container {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .version-logo-container {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">设置</h1>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 账户设置 -->
+        <div class="space-y-[1px] mt-[16px]">
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='account-setting.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#EFF6FF] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1005/64/64" alt="账户设置图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">账户设置</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='privacy-setting.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#D1FAE5] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1011/64/64" alt="隐私设置图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">隐私设置</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='notice-setting.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#FEF3C7] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1003/64/64" alt="通知设置图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">通知设置</span>
+                    </div>
+                    <div class="relative inline-block w-[40px] h-[20px]">
+                        <input type="checkbox" id="toggle" class="sr-only" checked>
+                        <label for="toggle" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                        <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 关于我们 -->
+        <div class="space-y-[1px] mt-[24px]">
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='about-us.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#FEE2E2] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1014/64/64" alt="关于我们图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">关于我们</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='user-agreement.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#E0E7FF] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1015/64/64" alt="用户协议图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">用户协议</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='privacy-policy.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#F3E8FF] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1016/64/64" alt="隐私政策图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">隐私政策</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='contact-service.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#FEE2E2] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1017/64/64" alt="联系客服图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">联系客服</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px] cursor-pointer" onclick="window.location.href='rating.html'">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[12px]">
+                        <div class="setting-icon-container w-[32px] h-[32px] bg-[#F3F4F6] rounded-[8px] flex items-center justify-center overflow-hidden">
+                            <img src="https://picsum.photos/id/1018/64/64" alt="给我们评分图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <span class="text-[16px]">给我们评分</span>
+                    </div>
+                    <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 清除缓存 -->
+        <div class="bg-white p-[16px] mt-[24px] cursor-pointer" onclick="clearCache()">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-[12px]">
+                    <div class="setting-icon-container w-[32px] h-[32px] bg-[#FEF3C7] rounded-[8px] flex items-center justify-center overflow-hidden">
+                        <img src="https://picsum.photos/id/1019/64/64" alt="清除缓存图标" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                    </div>
+                    <span class="text-[16px]">清除缓存</span>
+                </div>
+                <span class="text-[14px] text-[#9CA3AF]">12.3MB</span>
+            </div>
+        </div>
+        
+        <!-- 版本信息 -->
+        <div class="text-center mt-[48px]">
+            <div class="flex items-center justify-center gap-[8px] mb-[4px]">
+                <div class="version-logo-container w-[28px] h-[28px] rounded-full overflow-hidden">
+                    <img src="https://picsum.photos/id/1005/56/56" alt="智享书途平台logo" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this)">
+                </div>
+                <p class="text-[14px] text-[#9CA3AF]">版本 1.0.0</p>
+            </div>
+            <p class="text-[12px] text-[#9CA3AF]">© 2023 智享书途</p>
+        </div>
+    </main>
+
+    <!-- 图片放大模态框 -->
+    <div id="image-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 清除缓存功能 -->
+    <script>
+        function clearCache() {
+            // 显示确认弹窗
+            if (confirm('确定要清除缓存吗？')) {
+                // 模拟清除缓存操作
+                // 实际应用中可以使用localStorage.clear()或sessionStorage.clear()
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                // 显示清除成功提示
+                alert('缓存清除成功');
+                
+                // 更新缓存大小显示
+                const cacheSizeElement = document.querySelector('.bg-white p-[16px] mt-[24px] span.text-[14px]');
+                if (cacheSizeElement) {
+                    cacheSizeElement.textContent = '0MB';
+                }
+            }
+        }
+        
+        // 返回按钮点击事件
+        document.querySelector('.back-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+        
+        // 初始化图片放大功能
+        function initImageModal() {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            // 点击关闭按钮
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // 点击模态框外部关闭
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+        
+        // 打开图片放大模态框
+        function openImageModal(img) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化图片放大功能
+            initImageModal();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 找资料</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/app.js"></script>
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部搜索栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <div class="relative flex-1">
+                <input type="text" placeholder="搜索学习资料" class="w-full h-[36px] rounded-full bg-[#F3F4F6] pl-[40px] pr-[16px] text-[14px] focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:ring-opacity-50">
+                <i class="fa fa-search absolute left-[16px] top-1/2 transform -translate-y-1/2 text-[#9CA3AF]"></i>
+            </div>
+            <button class="text-[#4B5563] filter-btn" onclick="App.showModal('filter-modal.html')">
+                <i class="fa fa-filter text-[20px]"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 分类Tab横向滚动 -->
+        <div class="scroll-x flex gap-[16px] py-[12px] border-b border-[#E5E7EB]">
+            <button class="px-[12px] py-[4px] rounded-full bg-[#2563EB] text-white text-[14px] category-tab" data-category="all">全部</button>
+            <button class="px-[12px] py-[4px] rounded-full bg-white text-[#4B5563] text-[14px] category-tab" data-category="textbook">教材课本</button>
+            <button class="px-[12px] py-[4px] rounded-full bg-white text-[#4B5563] text-[14px] category-tab" data-category="review">复习资料</button>
+            <button class="px-[12px] py-[4px] rounded-full bg-white text-[#4B5563] text-[14px] category-tab" data-category="past-papers">历年真题</button>
+            <button class="px-[12px] py-[4px] rounded-full bg-white text-[#4B5563] text-[14px] category-tab" data-category="notes">笔记总结</button>
+            <button class="px-[12px] py-[4px] rounded-full bg-white text-[#4B5563] text-[14px] category-tab" data-category="ppt">课件PPT</button>
+            <button class="px-[12px] py-[4px] rounded-full bg-white text-[#4B5563] text-[14px] category-tab" data-category="lab-report">实验报告</button>
+        </div>
+
+        <!-- 排序功能 -->
+        <div class="flex items-center justify-between py-[12px]">
+            <span class="text-[14px] text-[#4B5563] result-count">共5条结果</span>
+            <div class="flex items-center gap-[8px]">
+                <span class="text-[14px] text-[#4B5563]">排序</span>
+                <div class="relative">
+                    <button class="text-[#2563EB] text-[14px] sort-btn flex items-center">
+                        <span>最新发布</span>
+                        <i class="fa fa-chevron-down ml-[4px]"></i>
+                    </button>
+                    <!-- 排序下拉菜单 -->
+                    <div class="absolute right-0 top-full mt-[4px] bg-white border border-[#E5E7EB] rounded-[8px] shadow-md hidden sort-dropdown">
+                        <ul class="min-w-[150px]">
+                            <li class="px-[12px] py-[8px] cursor-pointer hover:bg-[#F3F4F6]" data-sort="date">最新发布</li>
+                            <li class="px-[12px] py-[8px] cursor-pointer hover:bg-[#F3F4F6]" data-sort="downloads">下载量最高</li>
+                            <li class="px-[12px] py-[8px] cursor-pointer hover:bg-[#F3F4F6]" data-sort="score">评分最高</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 资料卡片列表流 -->
+        <div class="space-y-[16px]">
+            <!-- 资料卡片 -->
+            <a href="material-detail.html?id=1" class="card cursor-pointer" data-category="past-papers" data-id="1" data-title="大学英语四级考试真题集" data-date="2023-11-15" data-subject="英语学习" data-score="4.8" data-downloads="1256" data-points="120">
+                <div class="w-full h-[150px] bg-[#F3F4F6] rounded-[8px] mb-[12px]"></div>
+                <h3 class="text-[16px] font-medium mb-[4px]">大学英语四级考试真题集</h3>
+                <p class="text-[12px] text-[#9CA3AF] mb-[8px]">发布于 2023-11-15 | 英语学习</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[16px]">
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-star text-[#F97316]"></i>
+                            <span class="text-[12px] text-[#4B5563]">4.8</span>
+                        </div>
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-download text-[#2563EB]"></i>
+                            <span class="text-[12px] text-[#4B5563]">1256次</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-[4px]">
+                        <i class="fa fa-coins text-[#F97316]"></i>
+                        <span class="text-[12px] text-[#4B5563]">120积分</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 资料卡片 -->
+            <a href="material-detail.html?id=2" class="card cursor-pointer" data-category="notes" data-id="2" data-title="高等数学下册习题详解" data-date="2023-11-10" data-subject="数学学习" data-score="4.9" data-downloads="2189" data-points="150">
+                <div class="w-full h-[150px] bg-[#F3F4F6] rounded-[8px] mb-[12px]"></div>
+                <h3 class="text-[16px] font-medium mb-[4px]">高等数学下册习题详解</h3>
+                <p class="text-[12px] text-[#9CA3AF] mb-[8px]">发布于 2023-11-10 | 数学学习</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[16px]">
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-star text-[#F97316]"></i>
+                            <span class="text-[12px] text-[#4B5563]">4.9</span>
+                        </div>
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-download text-[#2563EB]"></i>
+                            <span class="text-[12px] text-[#4B5563]">2189次</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-[4px]">
+                        <i class="fa fa-coins text-[#F97316]"></i>
+                        <span class="text-[12px] text-[#4B5563]">150积分</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 资料卡片 -->
+            <a href="material-detail.html?id=3" class="card cursor-pointer" data-category="lab-report" data-id="3" data-title="计算机网络实验指导" data-date="2023-11-05" data-subject="计算机科学" data-score="4.7" data-downloads="892" data-points="99">
+                <div class="w-full h-[150px] bg-[#F3F4F6] rounded-[8px] mb-[12px]"></div>
+                <h3 class="text-[16px] font-medium mb-[4px]">计算机网络实验指导</h3>
+                <p class="text-[12px] text-[#9CA3AF] mb-[8px]">发布于 2023-11-05 | 计算机科学</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[16px]">
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-star text-[#F97316]"></i>
+                            <span class="text-[12px] text-[#4B5563]">4.7</span>
+                        </div>
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-download text-[#2563EB]"></i>
+                            <span class="text-[12px] text-[#4B5563]">892次</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-[4px]">
+                        <i class="fa fa-coins text-[#F97316]"></i>
+                        <span class="text-[12px] text-[#4B5563]">99积分</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 资料卡片 -->
+            <a href="material-detail.html?id=4" class="card cursor-pointer" data-category="lab-report" data-id="4" data-title="大学物理实验报告模板" data-date="2023-10-28" data-subject="物理学习" data-score="4.6" data-downloads="1567" data-points="79">
+                <div class="w-full h-[150px] bg-[#F3F4F6] rounded-[8px] mb-[12px]"></div>
+                <h3 class="text-[16px] font-medium mb-[4px]">大学物理实验报告模板</h3>
+                <p class="text-[12px] text-[#9CA3AF] mb-[8px]">发布于 2023-10-28 | 物理学习</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[16px]">
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-star text-[#F97316]"></i>
+                            <span class="text-[12px] text-[#4B5563]">4.6</span>
+                        </div>
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-download text-[#2563EB]"></i>
+                            <span class="text-[12px] text-[#4B5563]">1567次</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-[4px]">
+                        <i class="fa fa-coins text-[#F97316]"></i>
+                        <span class="text-[12px] text-[#4B5563]">79积分</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 资料卡片 -->
+            <a href="material-detail.html?id=5" class="card cursor-pointer" data-category="review" data-id="5" data-title="马克思主义基本原理概论复习笔记" data-date="2023-10-20" data-subject="政治学习" data-score="4.9" data-downloads="3256" data-points="139">
+                <div class="w-full h-[150px] bg-[#F3F4F6] rounded-[8px] mb-[12px]"></div>
+                <h3 class="text-[16px] font-medium mb-[4px]">马克思主义基本原理概论复习笔记</h3>
+                <p class="text-[12px] text-[#9CA3AF] mb-[8px]">发布于 2023-10-20 | 政治学习</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-[16px]">
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-star text-[#F97316]"></i>
+                            <span class="text-[12px] text-[#4B5563]">4.9</span>
+                        </div>
+                        <div class="flex items-center gap-[4px]">
+                            <i class="fa fa-download text-[#2563EB]"></i>
+                            <span class="text-[12px] text-[#4B5563]">3256次</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-[4px]">
+                        <i class="fa fa-coins text-[#F97316]"></i>
+                        <span class="text-[12px] text-[#4B5563]">139积分</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- 底部Tab栏 -->
+    <footer>
+        <div class="tabbar">
+            <!-- 首页 -->
+            <div class="tabbar-item inactive" data-page="home">
+                <i class="fa fa-home text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">首页</span>
+            </div>
+            
+            <!-- 找资料 -->
+            <div class="tabbar-item active" data-page="search">
+                <i class="fa fa-search text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">找资料</span>
+            </div>
+            
+            <!-- 互助 -->
+            <div class="tabbar-item inactive" data-page="exchange">
+                <i class="fa fa-exchange-alt text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">互助</span>
+            </div>
+            
+            <!-- 备考 -->
+            <div class="tabbar-item inactive" data-page="exam">
+                <i class="fa fa-pen-fancy text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">备考</span>
+            </div>
+            
+            <!-- 我的 -->
+            <div class="tabbar-item inactive" data-page="profile">
+                <i class="fa fa-user text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">我的</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 搜索页特定JavaScript -->
+    <script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化分类筛选
+            initCategoryTabs();
+            // 初始化排序功能
+            initSortFunction();
+        });
+        
+        // 初始化分类标签功能
+        function initCategoryTabs() {
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const materialCards = document.querySelectorAll('.card');
+            const resultCount = document.querySelector('.result-count');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签的激活状态
+                    categoryTabs.forEach(t => {
+                        t.classList.remove('bg-[#2563EB]', 'text-white');
+                        t.classList.add('bg-white', 'text-[#4B5563]');
+                    });
+                    
+                    // 添加当前标签的激活状态
+                    this.classList.remove('bg-white', 'text-[#4B5563]');
+                    this.classList.add('bg-[#2563EB]', 'text-white');
+                    
+                    // 获取当前选择的分类
+                    const category = this.dataset.category;
+                    
+                    // 筛选资料卡片
+                    let visibleCount = 0;
+                    materialCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // 更新结果数量
+                    resultCount.textContent = `共${visibleCount}条结果`;
+                    
+                    // 应用当前排序方式
+                    applyCurrentSort();
+                });
+            });
+        }
+        
+        // 初始化排序功能
+        function initSortFunction() {
+            const sortBtn = document.querySelector('.sort-btn');
+            const sortDropdown = document.querySelector('.sort-dropdown');
+            const sortOptions = document.querySelectorAll('.sort-dropdown li');
+            const materialCardsContainer = document.querySelector('.space-y-[16px]');
+            const materialCards = document.querySelectorAll('.card');
+            
+            let currentSort = 'date'; // 默认按最新发布排序
+            
+            // 点击排序按钮显示/隐藏下拉菜单
+            sortBtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // 阻止事件冒泡
+                sortDropdown.classList.toggle('hidden');
+            });
+            
+            // 点击下拉菜单选项
+            sortOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 阻止事件冒泡
+                    
+                    // 更新当前排序方式
+                    currentSort = this.dataset.sort;
+                    
+                    // 更新排序按钮文本
+                    const sortText = this.textContent;
+                    sortBtn.querySelector('span').textContent = sortText;
+                    
+                    // 隐藏下拉菜单
+                    sortDropdown.classList.add('hidden');
+                    
+                    // 应用排序
+                    applySort(currentSort);
+                });
+            });
+            
+            // 点击页面其他地方隐藏下拉菜单
+            document.addEventListener('click', function() {
+                sortDropdown.classList.add('hidden');
+            });
+            
+            // 阻止下拉菜单内部点击事件冒泡
+            sortDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // 应用排序的函数
+            function applySort(sortType) {
+                // 将NodeList转换为数组以便排序
+                const cardsArray = Array.from(materialCards).filter(card => card.style.display !== 'none');
+                
+                // 根据排序类型进行排序
+                switch(sortType) {
+                    case 'date':
+                        // 按发布日期降序排序
+                        cardsArray.sort((a, b) => {
+                            const dateA = new Date(a.dataset.date);
+                            const dateB = new Date(b.dataset.date);
+                            return dateB - dateA;
+                        });
+                        break;
+                    case 'downloads':
+                        // 按下载量降序排序
+                        cardsArray.sort((a, b) => {
+                            const downloadsA = parseInt(a.dataset.downloads);
+                            const downloadsB = parseInt(b.dataset.downloads);
+                            return downloadsB - downloadsA;
+                        });
+                        break;
+                    case 'score':
+                        // 按评分降序排序
+                        cardsArray.sort((a, b) => {
+                            const scoreA = parseFloat(a.dataset.score);
+                            const scoreB = parseFloat(b.dataset.score);
+                            return scoreB - scoreA;
+                        });
+                        break;
+                }
+                
+                // 重新排列卡片
+                cardsArray.forEach(card => {
+                    materialCardsContainer.appendChild(card);
+                });
+            }
+            
+            // 应用当前排序方式（用于分类筛选后重新排序）
+            window.applyCurrentSort = function() {
+                applySort(currentSort);
+            };
+        }
+    </script>
+</body>
+</html>

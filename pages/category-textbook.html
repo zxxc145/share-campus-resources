@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>教材课本 - 智享书途</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='category-all.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">教材课本</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-search text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 分类描述 -->
+        <div class="mt-[16px] bg-white rounded-[12px] p-[16px]">
+            <h2 class="text-[18px] font-medium mb-[4px]">教材课本</h2>
+            <p class="text-[14px] text-[#9CA3AF]">包含各专业核心教材，涵盖数学、物理、化学、计算机等多个学科领域。</p>
+        </div>
+
+        <!-- 内容筛选栏 -->
+        <div class="mt-[12px] bg-white rounded-[12px] p-[12px]">
+            <div class="flex gap-[8px] items-center overflow-x-auto pb-[4px]">
+                <button class="px-[12px] py-[6px] bg-[#EFF6FF] text-[#2563EB] rounded-full text-[14px] whitespace-nowrap">
+                    全部
+                </button>
+                <button class="px-[12px] py-[6px] bg-[#F3F4F6] text-[#4B5563] rounded-full text-[14px] whitespace-nowrap">
+                    最新发布
+                </button>
+                <button class="px-[12px] py-[6px] bg-[#F3F4F6] text-[#4B5563] rounded-full text-[14px] whitespace-nowrap">
+                    最受欢迎
+                </button>
+                <button class="px-[12px] py-[6px] bg-[#F3F4F6] text-[#4B5563] rounded-full text-[14px] whitespace-nowrap">
+                    最多下载
+                </button>
+            </div>
+        </div>
+
+        <!-- 资料列表 -->
+        <div class="space-y-[12px] mt-[16px]">
+            <!-- 资料项1 -->
+            <div class="card">
+                <div class="flex gap-[12px]">
+                    <div class="w-[80px] h-[100px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[16px] font-medium mb-[4px] line-clamp-2">高等数学（上册）第五版</h3>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[4px]">同济大学数学系 编</p>
+                            <div class="flex items-center gap-[12px]">
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-eye mr-[2px]"></i> 1580
+                                </span>
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-download mr-[2px]"></i> 672
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-[8px]">
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-coins text-[#F97316]"></i>
+                                <span class="text-[14px] font-medium text-[#F97316]">15积分</span>
+                            </div>
+                            <button class="px-[12px] py-[4px] bg-[#2563EB] text-white rounded-[8px] text-[14px]">
+                                下载
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资料项2 -->
+            <div class="card">
+                <div class="flex gap-[12px]">
+                    <div class="w-[80px] h-[100px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[16px] font-medium mb-[4px] line-clamp-2">大学物理（下册）第三版</h3>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[4px]">张三、李四 编著</p>
+                            <div class="flex items-center gap-[12px]">
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-eye mr-[2px]"></i> 950
+                                </span>
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-download mr-[2px]"></i> 345
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-[8px]">
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-coins text-[#F97316]"></i>
+                                <span class="text-[14px] font-medium text-[#F97316]">12积分</span>
+                            </div>
+                            <button class="px-[12px] py-[4px] bg-[#2563EB] text-white rounded-[8px] text-[14px]">
+                                下载
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资料项3 -->
+            <div class="card">
+                <div class="flex gap-[12px]">
+                    <div class="w-[80px] h-[100px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[16px] font-medium mb-[4px] line-clamp-2">线性代数（第二版）</h3>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[4px]">王五 主编</p>
+                            <div class="flex items-center gap-[12px]">
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-eye mr-[2px]"></i> 780
+                                </span>
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-download mr-[2px]"></i> 231
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-[8px]">
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-coins text-[#F97316]"></i>
+                                <span class="text-[14px] font-medium text-[#F97316]">10积分</span>
+                            </div>
+                            <button class="px-[12px] py-[4px] bg-[#2563EB] text-white rounded-[8px] text-[14px]">
+                                下载
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 资料项4 -->
+            <div class="card">
+                <div class="flex gap-[12px]">
+                    <div class="w-[80px] h-[100px] bg-[#F3F4F6] rounded-[8px]"></div>
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[16px] font-medium mb-[4px] line-clamp-2">计算机组成原理（第四版）</h3>
+                            <p class="text-[12px] text-[#9CA3AF] mb-[4px]">清华大学出版社</p>
+                            <div class="flex items-center gap-[12px]">
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-eye mr-[2px]"></i> 1200
+                                </span>
+                                <span class="text-[12px] text-[#9CA3AF]">
+                                    <i class="fa fa-download mr-[2px]"></i> 456
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-[8px]">
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-coins text-[#F97316]"></i>
+                                <span class="text-[14px] font-medium text-[#F97316]">20积分</span>
+                            </div>
+                            <button class="px-[12px] py-[4px] bg-[#2563EB] text-white rounded-[8px] text-[14px]">
+                                下载
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="fixed bottom-0 left-0 right-0 h-[60px] bg-white shadow-sm flex items-center justify-around z-10">
+        <button class="flex flex-col items-center justify-center" onclick="window.location.href='home.html'">
+            <i class="fa fa-home text-[20px] text-[#2563EB]"></i>
+            <span class="text-[10px] mt-[2px]">首页</span>
+        </button>
+        <button class="flex flex-col items-center justify-center" onclick="window.location.href='category-all.html'">
+            <i class="fa fa-th-large text-[20px] text-[#2563EB]"></i>
+            <span class="text-[10px] mt-[2px]">分类</span>
+        </button>
+        <button class="flex flex-col items-center justify-center" onclick="window.location.href='upload.html'">
+            <i class="fa fa-plus-circle text-[28px] text-[#2563EB]"></i>
+        </button>
+        <button class="flex flex-col items-center justify-center" onclick="window.location.href='exam.html'">
+            <i class="fa fa-file-alt text-[20px] text-[#4B5563]"></i>
+            <span class="text-[10px] mt-[2px]">考试</span>
+        </button>
+        <button class="flex flex-col items-center justify-center" onclick="window.location.href='profile.html'">
+            <i class="fa fa-user text-[20px] text-[#4B5563]"></i>
+            <span class="text-[10px] mt-[2px]">我的</span>
+        </button>
+    </nav>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 通知设置</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='settings.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">通知设置</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-save text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 通知设置开关 -->
+        <div class="mt-[16px]">
+            <div class="bg-white p-[16px]">
+                <div class="flex items-center justify-between mb-[16px]">
+                    <div class="text-[16px]">通知总开关</div>
+                    <div class="relative inline-block w-[40px] h-[20px]">
+                        <input type="checkbox" id="notification-toggle" class="sr-only" checked>
+                        <label for="notification-toggle" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                        <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-[#E5E7EB] pt-[16px]">
+                    <div class="text-[14px] text-[#6B7280] mb-[12px]">消息通知</div>
+                    
+                    <div class="space-y-[16px]">
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">订单通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="order-notification" class="sr-only" checked>
+                                <label for="order-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">资料审核通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="review-notification" class="sr-only" checked>
+                                <label for="review-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">好友申请通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="friend-notification" class="sr-only" checked>
+                                <label for="friend-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">评论回复通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="comment-notification" class="sr-only" checked>
+                                <label for="comment-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">积分变动通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="points-notification" class="sr-only" checked>
+                                <label for="points-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-[#E5E7EB] pt-[16px] mt-[16px]">
+                    <div class="text-[14px] text-[#6B7280] mb-[12px]">学习提醒</div>
+                    
+                    <div class="space-y-[16px]">
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">考前提醒</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="exam-notification" class="sr-only" checked>
+                                <label for="exam-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">学习计划提醒</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="plan-notification" class="sr-only">
+                                <label for="plan-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">资料更新提醒</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="update-notification" class="sr-only" checked>
+                                <label for="update-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-[#E5E7EB] pt-[16px] mt-[16px]">
+                    <div class="text-[14px] text-[#6B7280] mb-[12px]">系统通知</div>
+                    
+                    <div class="space-y-[16px]">
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">版本更新通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="version-notification" class="sr-only" checked>
+                                <label for="version-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="text-[16px]">活动通知</div>
+                            <div class="relative inline-block w-[40px] h-[20px]">
+                                <input type="checkbox" id="activity-notification" class="sr-only" checked>
+                                <label for="activity-notification" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                                <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 免打扰时间设置 -->
+        <div class="mt-[16px]">
+            <div class="bg-white p-[16px]">
+                <div class="text-[16px] mb-[12px]">免打扰时间</div>
+                
+                <div class="space-y-[12px]">
+                    <div class="flex items-center justify-between">
+                        <div class="text-[14px]">开启免打扰时间</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="do-not-disturb-time" class="sr-only">
+                            <label for="do-not-disturb-time" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-[12px]">
+                        <div>
+                            <div class="text-[12px] text-[#6B7280] mb-[4px]">开始时间</div>
+                            <input type="time" id="start-time" value="22:00" class="w-full px-[12px] py-[8px] border border-[#E5E7EB] rounded-[8px] focus:outline-none focus:border-[#2563EB]">
+                        </div>
+                        
+                        <div>
+                            <div class="text-[12px] text-[#6B7280] mb-[4px]">结束时间</div>
+                            <input type="time" id="end-time" value="07:00" class="w-full px-[12px] py-[8px] border border-[#E5E7EB] rounded-[8px] focus:outline-none focus:border-[#2563EB]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 通知设置功能 -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 通知总开关控制所有子开关
+            const notificationToggle = document.getElementById('notification-toggle');
+            const allToggles = document.querySelectorAll('input[type="checkbox"]:not(#notification-toggle)');
+            
+            notificationToggle.addEventListener('change', function() {
+                const isChecked = this.checked;
+                allToggles.forEach(toggle => {
+                    toggle.checked = isChecked;
+                    updateToggleStyle(toggle);
+                });
+                updateToggleStyle(this);
+            });
+            
+            // 保存按钮点击事件
+            const saveBtn = document.querySelector('header button:last-child');
+            saveBtn.addEventListener('click', function() {
+                // 获取所有设置值
+                const notificationSettings = {
+                    notificationToggle: document.getElementById('notification-toggle').checked,
+                    orderNotification: document.getElementById('order-notification').checked,
+                    reviewNotification: document.getElementById('review-notification').checked,
+                    friendNotification: document.getElementById('friend-notification').checked,
+                    commentNotification: document.getElementById('comment-notification').checked,
+                    pointsNotification: document.getElementById('points-notification').checked,
+                    examNotification: document.getElementById('exam-notification').checked,
+                    planNotification: document.getElementById('plan-notification').checked,
+                    updateNotification: document.getElementById('update-notification').checked,
+                    versionNotification: document.getElementById('version-notification').checked,
+                    activityNotification: document.getElementById('activity-notification').checked,
+                    doNotDisturbTime: document.getElementById('do-not-disturb-time').checked,
+                    startTime: document.getElementById('start-time').value,
+                    endTime: document.getElementById('end-time').value
+                };
+                
+                // 保存到localStorage
+                localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
+                
+                // 显示保存成功提示
+                alert('保存成功');
+            });
+            
+            // 从localStorage加载设置
+            const savedSettings = localStorage.getItem('notificationSettings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                
+                // 设置所有开关
+                for (const [key, value] of Object.entries(settings)) {
+                    const element = document.getElementById(key.replace(/([A-Z])/g, '-$1').toLowerCase());
+                    if (element) {
+                        if (element.type === 'checkbox') {
+                            element.checked = value;
+                            updateToggleStyle(element);
+                        } else {
+                            element.value = value;
+                        }
+                    }
+                }
+            }
+            
+            // 更新开关样式
+            function updateToggleStyle(toggle) {
+                const label = toggle.nextElementSibling;
+                const dot = label.nextElementSibling;
+                
+                if (toggle.checked) {
+                    label.classList.remove('bg-[#E5E7EB]');
+                    label.classList.add('bg-[#2563EB]');
+                    dot.style.transform = 'translateX(20px)';
+                } else {
+                    label.classList.remove('bg-[#2563EB]');
+                    label.classList.add('bg-[#E5E7EB]');
+                    dot.style.transform = 'translateX(0)';
+                }
+            }
+            
+            // 为所有开关添加点击事件，更新样式
+            allToggles.forEach(toggle => {
+                toggle.addEventListener('change', function() {
+                    updateToggleStyle(this);
+                });
+            });
+            
+            // 初始化所有开关样式
+            document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+                updateToggleStyle(toggle);
+            });
+        });
+    </script>
+</body>
+</html>

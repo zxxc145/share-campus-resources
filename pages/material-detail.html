@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>资料详情 - 智享书途</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="../assets/js/app.js"></script>
+    <style>
+        /* 图片点击放大功能 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        /* 封面图容器 */
+        .cover-image-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* 推荐资料图片容器 */
+        .recommended-image-container {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 640px) {
+            .cover-image-container {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">资料详情</h1>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 资料卡片 -->
+        <div class="bg-white p-[16px] rounded-[12px] shadow-sm mt-[16px]">
+            <!-- 资料封面 -->
+            <div class="cover-image-container w-full h-[180px] bg-[#F3F4F6] rounded-[8px] mb-[16px]">
+                <img id="material-cover" src="" alt="资料封面" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this)">
+            </div>
+            
+            <!-- 资料标题和信息 -->
+            <h2 id="material-title" class="text-[20px] font-bold mb-[8px]">资料标题</h2>
+            <p id="material-info" class="text-[14px] text-[#9CA3AF] mb-[16px]">资料分类 | 发布时间</p>
+            
+            <!-- 评分和下载量 -->
+            <div class="flex items-center gap-[24px] mb-[16px]">
+                <div class="flex items-center gap-[4px]">
+                    <i class="fa fa-star text-[#F97316]"></i>
+                    <span id="material-score" class="text-[14px] text-[#4B5563]">0.0</span>
+                </div>
+                <div class="flex items-center gap-[4px]">
+                    <i class="fa fa-download text-[#2563EB]"></i>
+                    <span id="material-downloads" class="text-[14px] text-[#4B5563]">0次</span>
+                </div>
+            </div>
+            
+            <!-- 资料描述 -->
+            <div class="mb-[16px]">
+                <h3 class="text-[16px] font-medium mb-[8px]">资料简介</h3>
+                <p id="material-description" class="text-[14px] text-[#4B5563] leading-[22px]">资料描述内容</p>
+            </div>
+            
+            <!-- 资料详情 -->
+            <div class="mb-[24px]">
+                <h3 class="text-[16px] font-medium mb-[8px]">资料详情</h3>
+                <div class="space-y-[8px]">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[14px] text-[#9CA3AF]">文件大小</span>
+                        <span id="material-size" class="text-[14px] text-[#4B5563]">0MB</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[14px] text-[#9CA3AF]">浏览次数</span>
+                        <span id="material-views" class="text-[14px] text-[#4B5563]">0次</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-[14px] text-[#9CA3AF]">发布者</span>
+                        <span id="material-author" class="text-[14px] text-[#4B5563]">匿名用户</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 兑换按钮 -->
+            <div class="flex items-center gap-[12px]">
+                <div class="flex-1">
+                    <div class="text-[12px] text-[#9CA3AF] mb-[4px]">所需积分</div>
+                    <div class="text-[24px] font-bold text-[#F97316]">
+                        <i class="fa fa-coins text-[20px]"></i>
+                        <span id="material-points">0</span>
+                    </div>
+                </div>
+                <button class="exchange-btn flex-1 py-[12px] bg-[#2563EB] text-white font-medium rounded-[8px]">
+                    立即兑换
+                </button>
+            </div>
+        </div>
+        
+        <!-- 推荐资料 -->
+        <div class="mt-[24px]">
+            <div class="flex items-center justify-between mb-[16px]">
+                <h2 class="text-[18px] font-medium">AI智能推荐</h2>
+                <a href="search.html" class="text-[#2563EB] text-[14px]">查看更多</a>
+            </div>
+            <div class="space-y-[16px]">
+                <!-- 推荐资料卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 备考套餐 -->
+        <div class="mt-[24px]">
+            <div class="flex items-center justify-between mb-[16px]">
+                <h2 class="text-[18px] font-medium">备考套餐</h2>
+                <a href="exam.html" class="text-[#2563EB] text-[14px]">查看更多</a>
+            </div>
+            <div class="grid grid-cols-2 gap-[16px]">
+                <!-- 套餐卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </main>
+
+    <!-- 图片放大模态框 -->
+    <div id="image-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 页面特定JavaScript -->
+    <script>
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMaterialDetails();
+            // 初始化图片放大功能
+            initImageModal();
+        });
+        
+        // 加载资料详情
+        function loadMaterialDetails() {
+            // 获取URL参数，如果没有提供id，则使用默认值1
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id') || '1';
+            
+            // 模拟资料数据
+            const materialData = {
+                1: {
+                    id: 1,
+                    title: "大学英语四级考试真题集",
+                    category: "历年真题",
+                    subject: "英语学习",
+                    date: "2023-11-15",
+                    score: 4.8,
+                    downloads: 1256,
+                    views: 3456,
+                    author: "英语学习达人",
+                    size: "25.6MB",
+                    points: 120,
+                    description: "本资料包含2018-2023年大学英语四级考试真题及答案解析，
+                    适合准备参加大学英语四级考试的学生使用。资料内容全面，解析详细，
+                    有助于提高英语水平和考试成绩。",
+                    coverImage: "https://picsum.photos/id/1011/800/400"
+                },
+                2: {
+                    id: 2,
+                    title: "高等数学下册习题详解",
+                    category: "笔记总结",
+                    subject: "数学学习",
+                    date: "2023-11-10",
+                    score: 4.9,
+                    downloads: 2189,
+                    views: 5678,
+                    author: "数学小王子",
+                    size: "32.8MB",
+                    points: 150,
+                    description: "本资料是高等数学下册的习题详解，包含了教材中所有习题的详细解答过程。
+                    每道题都有清晰的思路分析和步骤讲解，有助于学生理解解题方法和技巧，
+                    提高数学学习能力。",
+                    coverImage: "https://picsum.photos/id/1074/800/400"
+                },
+                3: {
+                    id: 3,
+                    title: "计算机网络实验指导",
+                    category: "实验报告",
+                    subject: "计算机科学",
+                    date: "2023-11-05",
+                    score: 4.7,
+                    downloads: 892,
+                    views: 2345,
+                    author: "网络工程师",
+                    size: "18.5MB",
+                    points: 99,
+                    description: "本资料是计算机网络实验课程的实验指导书，包含了12个实验项目的详细指导。
+                    每个实验都有实验目的、实验原理、实验步骤和实验报告要求，
+                    适合计算机科学与技术专业的学生使用。",
+                    coverImage: "https://picsum.photos/id/1000/800/400"
+                },
+                4: {
+                    id: 4,
+                    title: "大学物理实验报告模板",
+                    category: "实验报告",
+                    subject: "物理学习",
+                    date: "2023-10-28",
+                    score: 4.6,
+                    downloads: 1567,
+                    views: 4567,
+                    author: "物理爱好者",
+                    size: "5.2MB",
+                    points: 79,
+                    description: "本资料是大学物理实验报告的模板，包含了实验报告的标准格式和写作要求。
+                    模板设计规范，内容完整，使用方便，
+                    有助于学生撰写规范、合格的物理实验报告。",
+                    coverImage: "https://picsum.photos/id/1069/800/400"
+                },
+                5: {
+                    id: 5,
+                    title: "马克思主义基本原理概论复习笔记",
+                    category: "复习资料",
+                    subject: "政治学习",
+                    date: "2023-10-20",
+                    score: 4.9,
+                    downloads: 3256,
+                    views: 7890,
+                    author: "政治学霸",
+                    size: "12.3MB",
+                    points: 139,
+                    description: "本资料是马克思主义基本原理概论课程的复习笔记，包含了课程的重点知识点和考点。
+                    笔记内容全面，条理清晰，重点突出，
+                    有助于学生复习备考，取得好成绩。",
+                    coverImage: "https://picsum.photos/id/1049/800/400"
+                }
+            };
+            
+            // 获取当前资料数据
+            const material = materialData[id];
+            
+            // 如果找不到资料，显示错误信息
+            if (!material) {
+                const container = document.querySelector('.bg-white.p-[16px].rounded-[12px].shadow-sm');
+                container.innerHTML = `
+                    <div class="text-center py-[40px]">
+                        <i class="fa fa-exclamation-triangle text-[48px] text-[#F97316] mb-[16px]"></i>
+                        <h3 class="text-[18px] font-medium mb-[8px]">资料不存在</h3>
+                        <p class="text-[14px] text-[#9CA3AF] mb-[24px]">您访问的资料不存在或已被删除</p>
+                        <button class="back-to-search px-[24px] py-[8px] bg-[#2563EB] text-white rounded-[8px]">
+                            返回搜索页
+                        </button>
+                    </div>
+                `;
+                // 绑定返回搜索页按钮的点击事件
+                container.querySelector('.back-to-search').addEventListener('click', function() {
+                    window.location.href = 'search.html';
+                });
+                return;
+            }
+            
+            // 更新页面内容
+            document.getElementById('material-title').textContent = material.title;
+            document.getElementById('material-info').textContent = `${material.category} | 发布于 ${material.date}`;
+            document.getElementById('material-score').textContent = material.score;
+            document.getElementById('material-downloads').textContent = `${material.downloads}次`;
+            document.getElementById('material-views').textContent = `${material.views}次`;
+            document.getElementById('material-author').textContent = material.author;
+            document.getElementById('material-size').textContent = material.size;
+            document.getElementById('material-points').textContent = material.points;
+            document.getElementById('material-description').textContent = material.description;
+            document.getElementById('material-cover').src = material.coverImage;
+            document.getElementById('material-cover').alt = `${material.title}封面`;
+            
+            // 更新页面标题
+            document.title = `${material.title} - 智享书途`;
+            
+            // 生成推荐资料
+            generateRecommendedMaterials(material.category);
+            
+            // 生成备考套餐
+            generateExamPackages(material.subject);
+        }
+        
+        // 生成推荐资料
+        function generateRecommendedMaterials(category) {
+            // 模拟推荐资料数据
+            const recommendedMaterials = {
+                "历年真题": [
+                    { id: 6, title: "大学英语六级考试真题集", score: 4.7, points: 150, coverImage: "https://picsum.photos/id/1012/400/200" },
+                    { id: 7, title: "高等数学上册考试真题", score: 4.8, points: 120, coverImage: "https://picsum.photos/id/1075/400/200" },
+                    { id: 8, title: "计算机组成原理考研真题", score: 4.9, points: 180, coverImage: "https://picsum.photos/id/1001/400/200" }
+                ],
+                "笔记总结": [
+                    { id: 9, title: "高等数学上册习题详解", score: 4.7, points: 120, coverImage: "https://picsum.photos/id/1076/400/200" },
+                    { id: 10, title: "线性代数知识点总结", score: 4.8, points: 99, coverImage: "https://picsum.photos/id/1013/400/200" },
+                    { id: 11, title: "概率论与数理统计笔记", score: 4.6, points: 89, coverImage: "https://picsum.photos/id/1077/400/200" }
+                ],
+                "实验报告": [
+                    { id: 12, title: "数字电路实验报告", score: 4.7, points: 89, coverImage: "https://picsum.photos/id/1002/400/200" },
+                    { id: 13, title: "电子技术实验指导", score: 4.6, points: 79, coverImage: "https://picsum.photos/id/1067/400/200" },
+                    { id: 14, title: "数据结构实验报告模板", score: 4.8, points: 69, coverImage: "https://picsum.photos/id/1003/400/200" }
+                ],
+                "复习资料": [
+                    { id: 15, title: "毛泽东思想复习笔记", score: 4.8, points: 119, coverImage: "https://picsum.photos/id/1050/400/200" },
+                    { id: 16, title: "中国近现代史纲要重点", score: 4.7, points: 109, coverImage: "https://picsum.photos/id/1051/400/200" },
+                    { id: 17, title: "思想道德修养与法律基础", score: 4.6, points: 99, coverImage: "https://picsum.photos/id/1052/400/200" }
+                ]
+            };
+            
+            const materials = recommendedMaterials[category] || recommendedMaterials["历年真题"];
+            // 直接选择推荐资料的容器
+            const container = document.querySelector('.mt-[24px] .space-y-[16px]');
+            
+            if (container) {
+                materials.forEach(material => {
+                    const card = document.createElement('a');
+                    card.href = `material-detail.html?id=${material.id}`;
+                    card.className = 'card cursor-pointer block';
+                    card.innerHTML = `
+                        <div class="recommended-image-container w-full h-[120px] bg-[#F3F4F6] rounded-[8px] mb-[12px] overflow-hidden">
+                            <img src="${material.coverImage}" alt="${material.title}缩略图" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <h3 class="text-[16px] font-medium mb-[4px] line-clamp-2">${material.title}</h3>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-star text-[#F97316]"></i>
+                                <span class="text-[12px] text-[#4B5563]">${material.score}</span>
+                            </div>
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-coins text-[#F97316]"></i>
+                                <span class="text-[12px] text-[#4B5563]">${material.points}积分</span>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        }
+        
+        // 生成备考套餐
+        function generateExamPackages(subject) {
+            // 模拟备考套餐数据
+            const examPackages = {
+                "英语学习": [
+                    { id: 1, title: "英语四六级备考套餐", books: 8, points: 799, coverImage: "https://picsum.photos/id/1014/400/200" },
+                    { id: 2, title: "考研英语冲刺套餐", books: 12, points: 1299, coverImage: "https://picsum.photos/id/1015/400/200" }
+                ],
+                "数学学习": [
+                    { id: 3, title: "高等数学备考套餐", books: 6, points: 599, coverImage: "https://picsum.photos/id/1078/400/200" },
+                    { id: 4, title: "考研数学全套资料", books: 15, points: 1499, coverImage: "https://picsum.photos/id/1079/400/200" }
+                ],
+                "计算机科学": [
+                    { id: 5, title: "计算机考研套餐", books: 15, points: 1299, coverImage: "https://picsum.photos/id/1004/400/200" },
+                    { id: 6, title: "计算机等级考试套餐", books: 10, points: 899, coverImage: "https://picsum.photos/id/1005/400/200" }
+                ],
+                "物理学习": [
+                    { id: 7, title: "大学物理实验套餐", books: 10, points: 699, coverImage: "https://picsum.photos/id/1070/400/200" },
+                    { id: 8, title: "物理考研辅导套餐", books: 12, points: 1099, coverImage: "https://picsum.photos/id/1071/400/200" }
+                ],
+                "政治学习": [
+                    { id: 9, title: "考研政治全套资料", books: 15, points: 1199, coverImage: "https://picsum.photos/id/1053/400/200" },
+                    { id: 10, title: "大学政治备考套餐", books: 8, points: 799, coverImage: "https://picsum.photos/id/1054/400/200" }
+                ]
+            };
+            
+            const packages = examPackages[subject] || examPackages["英语学习"];
+            // 直接选择备考套餐的容器
+            const container = document.querySelector('.mt-[24px] .grid.grid-cols-2.gap-[16px]');
+            
+            if (container) {
+                packages.forEach(pkg => {
+                    const card = document.createElement('a');
+                    card.href = `package-detail.html?id=${pkg.id}`;
+                    card.className = 'card cursor-pointer block';
+                    card.innerHTML = `
+                        <div class="recommended-image-container w-full h-[100px] bg-[#F3F4F6] rounded-[8px] mb-[12px] overflow-hidden">
+                            <img src="${pkg.coverImage}" alt="${pkg.title}缩略图" class="w-full h-full object-cover" loading="lazy" onclick="openImageModal(this); event.stopPropagation();">
+                        </div>
+                        <h3 class="text-[16px] font-medium mb-[4px] line-clamp-2">${pkg.title}</h3>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-book text-[#2563EB]"></i>
+                                <span class="text-[12px] text-[#4B5563]">${pkg.books}本</span>
+                            </div>
+                            <div class="flex items-center gap-[4px]">
+                                <i class="fa fa-coins text-[#F97316]"></i>
+                                <span class="text-[12px] text-[#4B5563]">${pkg.points}积分</span>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        }
+        
+        // 返回按钮点击事件 - 移到DOMContentLoaded内部确保元素已加载
+        document.addEventListener('DOMContentLoaded', function() {
+            const backBtn = document.querySelector('.back-btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', function() {
+                    window.history.back();
+                });
+            }
+        });
+        
+        // 立即兑换按钮点击事件
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.exchange-btn')) {
+                alert('兑换成功！资料已添加到您的下载列表。');
+                // 实际应用中，这里应该跳转到兑换确认页面或执行兑换逻辑
+                // 可以通过URL参数获取当前资料ID
+                const params = new URLSearchParams(window.location.search);
+                const id = params.get('id');
+                // window.location.href = `exchange-confirm.html?id=${id}`;
+            }
+        });
+        
+        // 初始化图片放大功能
+        function initImageModal() {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            // 点击关闭按钮
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            
+            // 点击模态框外部关闭
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+        
+        // 打开图片放大模态框
+        function openImageModal(img) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            
+            modal.style.display = 'flex';
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+        }
+    </script>
+</body>
+</html>

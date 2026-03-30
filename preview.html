@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 首页</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/app.js"></script>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'PingFang SC', sans-serif;
+            background-color: #F3F4F6;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        /* 顶部状态栏 */
+        .status-bar {
+            height: 44px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 12px;
+            z-index: 100;
+        }
+
+        /* 顶部导航栏 */
+        .header {
+            height: 48px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            border-bottom: 1px solid #E5E7EB;
+            z-index: 99;
+        }
+
+        /* 轮播图样式 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .banner-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+        }
+
+        .banner-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+        }
+
+        /* 分类入口样式 */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        /* 资料卡片样式 */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 底部Tab栏 */
+        .tabbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #E5E7EB;
+            padding-bottom: env(safe-area-inset-bottom);
+            z-index: 100;
+        }
+
+        .tabbar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .tabbar-item.active {
+            color: #2563EB;
+        }
+
+        /* 按钮样式 */
+        .btn-primary {
+            width: 100%;
+            height: 48px;
+            background-color: #2563EB;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        /* 安全区域适配 */
+        @media (max-width: 375px) {
+            .content {
+                padding-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部状态栏 -->
+    <div class="status-bar">
+        <div class="time">9:41</div>
+        <div class="flex items-center gap-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <div class="header">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-[#EFF6FF] flex items-center justify-center">
+                <i class="fas fa-user text-[#2563EB]"></i>
+            </div>
+            <span class="font-bold text-lg">智享书途</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="text-gray-500">
+                <i class="fas fa-search text-lg"></i>
+            </button>
+            <button class="text-gray-500 relative">
+                <i class="fas fa-bell text-lg"></i>
+                <span class="absolute -top-1 -right-1 w-3 h-3 bg-[#F97316] rounded-full"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="content px-4 pt-4 pb-20">
+        <!-- 轮播图 -->
+        <div class="banner-container">
+            <div class="banner-slides">
+                <div class="banner-slide">
+                    <img src="https://picsum.photos/id/1047/800/400" alt="图书馆学习" loading="lazy">
+                    <div class="banner-overlay"></div>
+                    <div class="banner-text">
+                        <h3 class="text-xl font-bold">图书馆学习</h3>
+                        <p class="text-sm">在安静的环境中高效学习</p>
+                    </div>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://picsum.photos/id/1058/800/400" alt="资料分享" loading="lazy">
+                    <div class="banner-overlay"></div>
+                    <div class="banner-text">
+                        <h3 class="text-xl font-bold">资料分享</h3>
+                        <p class="text-sm">与同学分享优质学习资源</p>
+                    </div>
+                </div>
+                <div class="banner-slide">
+                    <img src="https://picsum.photos/id/1074/800/400" alt="备考冲刺" loading="lazy">
+                    <div class="banner-overlay"></div>
+                    <div class="banner-text">
+                        <h3 class="text-xl font-bold">备考冲刺</h3>
+                        <p class="text-sm">高效备考，取得好成绩</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分类入口 -->
+        <div class="mt-4">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-medium">资料分类</h2>
+                <a href="#" class="text-[#2563EB] text-sm">全部</a>
+            </div>
+            <div class="category-grid">
+                <div class="category-item">
+                    <div class="category-icon bg-[#EFF6FF] text-[#2563EB]">
+                        <i class="fa fa-book"></i>
+                    </div>
+                    <span class="text-sm">教材课本</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#F0FDF4] text-[#10B981]">
+                        <i class="fa fa-clipboard-list"></i>
+                    </div>
+                    <span class="text-sm">复习资料</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#FEF3C7] text-[#F59E0B]">
+                        <i class="fa fa-file-alt"></i>
+                    </div>
+                    <span class="text-sm">历年真题</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#FDE68A] text-[#F59E0B]">
+                        <i class="fa fa-sticky-note"></i>
+                    </div>
+                    <span class="text-sm">笔记总结</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#FCE7F3] text-[#EC4899]">
+                        <i class="fa fa-file-powerpoint"></i>
+                    </div>
+                    <span class="text-sm">课件PPT</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#E0F2FE] text-[#0EA5E9]">
+                        <i class="fa fa-flask"></i>
+                    </div>
+                    <span class="text-sm">实验报告</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#EDE9FE] text-[#8B5CF6]">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <span class="text-sm">考研资料</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon bg-[#FEE2E2] text-[#EF4444]">
+                        <i class="fa fa-file-contract"></i>
+                    </div>
+                    <span class="text-sm">模板资料</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 热门推荐 -->
+        <div class="mt-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-medium">热门推荐</h2>
+                <a href="#" class="text-[#2563EB] text-sm">查看更多</a>
+            </div>
+            <div class="space-y-4">
+                <!-- 资料卡片 -->
+                <div class="card">
+                    <div class="relative">
+                        <div class="w-full h-40 bg-gray-100 rounded-8 overflow-hidden">
+                            <img src="https://picsum.photos/id/1011/800/400" alt="大学英语四级考试真题集" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute top-2 right-2 bg-white/80 px-2 py-1 rounded-full text-xs font-medium">
+                            历年真题
+                        </div>
+                    </div>
+                    <h3 class="text-base font-medium mt-3">大学英语四级考试真题集</h3>
+                    <div class="flex justify-between items-center mt-2 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-[#F97316]"></i>
+                                <span>4.8</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-download text-[#2563EB]"></i>
+                                <span>1256次</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-coins text-[#F97316]"></i>
+                            <span>120积分</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 资料卡片 -->
+                <div class="card">
+                    <div class="relative">
+                        <div class="w-full h-40 bg-gray-100 rounded-8 overflow-hidden">
+                            <img src="https://picsum.photos/id/1074/800/400" alt="高等数学下册习题详解" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute top-2 right-2 bg-white/80 px-2 py-1 rounded-full text-xs font-medium">
+                            笔记总结
+                        </div>
+                    </div>
+                    <h3 class="text-base font-medium mt-3">高等数学下册习题详解</h3>
+                    <div class="flex justify-between items-center mt-2 text-sm">
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-star text-[#F97316]"></i>
+                                <span>4.9</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <i class="fas fa-download text-[#2563EB]"></i>
+                                <span>2189次</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-coins text-[#F97316]"></i>
+                            <span>150积分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 备考套餐 -->
+        <div class="mt-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-medium">备考套餐</h2>
+                <a href="#" class="text-[#2563EB] text-sm">查看更多</a>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- 套餐卡片 -->
+                <div class="card">
+                    <div class="w-full h-28 bg-gray-100 rounded-8 overflow-hidden">
+                        <img src="https://picsum.photos/id/1014/400/200" alt="英语四六级备考套餐" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-base font-medium mt-3 line-clamp-2">英语四六级备考套餐</h3>
+                    <div class="flex justify-between items-center mt-2 text-sm">
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-book text-[#2563EB]"></i>
+                            <span>8本</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-coins text-[#F97316]"></i>
+                            <span>799积分</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 套餐卡片 -->
+                <div class="card">
+                    <div class="w-full h-28 bg-gray-100 rounded-8 overflow-hidden">
+                        <img src="https://picsum.photos/id/1078/400/200" alt="高等数学备考套餐" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-base font-medium mt-3 line-clamp-2">高等数学备考套餐</h3>
+                    <div class="flex justify-between items-center mt-2 text-sm">
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-book text-[#2563EB]"></i>
+                            <span>6本</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <i class="fas fa-coins text-[#F97316]"></i>
+                            <span>599积分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部Tab栏 -->
+    <div class="tabbar">
+        <div class="tabbar-item active">
+            <i class="fas fa-home text-xl"></i>
+            <span class="text-xs">首页</span>
+        </div>
+        <div class="tabbar-item">
+            <i class="fas fa-search text-xl"></i>
+            <span class="text-xs">找资料</span>
+        </div>
+        <div class="tabbar-item">
+            <i class="fas fa-exchange-alt text-xl"></i>
+            <span class="text-xs">互助</span>
+        </div>
+        <div class="tabbar-item">
+            <i class="fas fa-pen-fancy text-xl"></i>
+            <span class="text-xs">备考</span>
+        </div>
+        <div class="tabbar-item">
+            <i class="fas fa-user text-xl"></i>
+            <span class="text-xs">我的</span>
+        </div>
+    </div>
+
+    <script>
+        // 轮播图自动播放
+        const slides = document.querySelector('.banner-slides');
+        const slideElements = document.querySelectorAll('.banner-slide');
+        let currentIndex = 0;
+        const slideWidth = slideElements[0].offsetWidth;
+        const totalSlides = slideElements.length;
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        setInterval(nextSlide, 3000);
+
+        // Tab栏切换
+        const tabbarItems = document.querySelectorAll('.tabbar-item');
+        tabbarItems.forEach(item => {
+            item.addEventListener('click', () => {
+                tabbarItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

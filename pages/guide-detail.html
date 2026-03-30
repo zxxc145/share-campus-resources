@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>备考攻略详情 - 智享书途</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='exam-emergency.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">备考攻略详情</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-share-alt text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 攻略详情卡片 -->
+        <div class="card mt-[16px]" id="guideDetail">
+            <!-- 攻略内容将通过JavaScript动态加载 -->
+            <div class="text-center py-[40px]">
+                <i class="fa fa-spinner fa-spin text-[48px] text-[#9CA3AF]"></i>
+                <p class="mt-[16px] text-[14px] text-[#9CA3AF]">加载中...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部Tab栏 -->
+    <footer>
+        <div class="tabbar">
+            <!-- 首页 -->
+            <div class="tabbar-item inactive" data-page="home">
+                <i class="fa fa-home text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">首页</span>
+            </div>
+            
+            <!-- 找资料 -->
+            <div class="tabbar-item inactive" data-page="search">
+                <i class="fa fa-search text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">找资料</span>
+            </div>
+            
+            <!-- 互助 -->
+            <div class="tabbar-item inactive" data-page="exchange">
+                <i class="fa fa-exchange-alt text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">互助</span>
+            </div>
+            
+            <!-- 备考 -->
+            <div class="tabbar-item active" data-page="exam">
+                <i class="fa fa-pen-fancy text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">备考</span>
+            </div>
+            
+            <!-- 我的 -->
+            <div class="tabbar-item inactive" data-page="profile">
+                <i class="fa fa-user text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">我的</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 页面特定JavaScript -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const guideId = urlParams.get('id') || '1';
+            
+            // 攻略数据
+            const guides = {
+                '1': {
+                    id: '1',
+                    title: '如何高效复习期末考试',
+                    author: '张三',
+                    date: '2023-11-20',
+                    likes: '156',
+                    content: `
+                        <h2 class="text-[24px] font-bold mb-[16px]">如何高效复习期末考试</h2>
+                        <div class="text-[14px] text-[#9CA3AF] mb-[24px]">
+                            作者：张三 | 发布于 2023-11-20 | <i class="fa fa-heart text-[#EF4444]"></i> 156赞
+                        </div>
+                        
+                        <div class="prose max-w-none">
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">1. 制定合理的复习计划</h3>
+                            <p class="mb-[16px]">在考试前一周，制定详细的复习计划，合理分配各科目复习时间。根据科目难度和自己的掌握程度，重点复习薄弱科目。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">2. 重点知识梳理</h3>
+                            <p class="mb-[16px]">找出课本或笔记中的重点内容，制作思维导图或知识卡片，帮助记忆和理解。重点关注老师强调的知识点和历年考试真题涉及的内容。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">3. 做真题和模拟题</h3>
+                            <p class="mb-[16px]">通过做历年真题和模拟题，了解考试题型和出题规律，提高解题速度和准确率。注意总结错题，分析错误原因。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">4. 小组讨论和互助学习</h3>
+                            <p class="mb-[16px]">与同学组成学习小组，互相讨论问题，分享学习经验和资料。通过讲解知识点，可以加深对内容的理解和记忆。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">5. 合理安排休息时间</h3>
+                            <p class="mb-[16px]">复习期间要注意休息，保证充足的睡眠。适当的运动和放松可以提高学习效率，避免过度疲劳。</p>
+                            
+                            <div class="bg-[#EFF6FF] p-[16px] rounded-[8px] mt-[32px]">
+                                <p class="text-[14px] text-[#2563EB]"><strong>小贴士：</strong>考试前一天，不要再学习新的内容，重点复习已经掌握的知识，保持良好的心态和充足的睡眠。</p>
+                            </div>
+                        </div>
+                    `
+                },
+                '2': {
+                    id: '2',
+                    title: '高等数学快速提分技巧',
+                    author: '李四',
+                    date: '2023-11-18',
+                    likes: '234',
+                    content: `
+                        <h2 class="text-[24px] font-bold mb-[16px]">高等数学快速提分技巧</h2>
+                        <div class="text-[14px] text-[#9CA3AF] mb-[24px]">
+                            作者：李四 | 发布于 2023-11-18 | <i class="fa fa-heart text-[#EF4444]"></i> 234赞
+                        </div>
+                        
+                        <div class="prose max-w-none">
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">1. 掌握基本概念和公式</h3>
+                            <p class="mb-[16px]">高等数学的基础是基本概念和公式，一定要熟练掌握。建议将常用公式整理成小册子，随时复习。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">2. 理解定理的证明过程</h3>
+                            <p class="mb-[16px]">理解定理的证明过程可以帮助你更好地掌握定理的应用条件和范围，避免在解题时出现错误。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">3. 多做练习题</h3>
+                            <p class="mb-[16px]">通过做大量的练习题，提高解题能力和技巧。注意总结不同题型的解题方法和思路。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">4. 重视错题整理</h3>
+                            <p class="mb-[16px]">将做错的题目整理出来，分析错误原因，定期复习。错题本是提高数学成绩的重要工具。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">5. 掌握解题技巧</h3>
+                            <p class="mb-[16px]">高等数学中有很多解题技巧，如换元法、分部积分法、泰勒展开等，要熟练掌握这些技巧的应用条件和方法。</p>
+                        </div>
+                    `
+                },
+                '3': {
+                    id: '3',
+                    title: '考前一周时间规划',
+                    author: '王五',
+                    date: '2023-11-15',
+                    likes: '189',
+                    content: `
+                        <h2 class="text-[24px] font-bold mb-[16px]">考前一周时间规划</h2>
+                        <div class="text-[14px] text-[#9CA3AF] mb-[24px]">
+                            作者：王五 | 发布于 2023-11-15 | <i class="fa fa-heart text-[#EF4444]"></i> 189赞
+                        </div>
+                        
+                        <div class="prose max-w-none">
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">第7天：制定复习计划</h3>
+                            <p class="mb-[16px]">列出所有需要复习的科目和内容，根据重要性和自己的掌握程度，制定详细的复习计划。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">第6天：梳理知识点</h3>
+                            <p class="mb-[16px]">整理各科目的知识点，制作思维导图或知识卡片，帮助记忆和理解。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">第5-4天：重点复习</h3>
+                            <p class="mb-[16px]">根据复习计划，重点复习薄弱科目和重要知识点。做一些基础练习题，巩固知识。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">第3-2天：做真题和模拟题</h3>
+                            <p class="mb-[16px]">做历年真题和模拟题，了解考试题型和出题规律，提高解题速度和准确率。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">第1天：回顾和休息</h3>
+                            <p class="mb-[16px]">回顾重点知识点和错题，不要学习新的内容。保证充足的睡眠，放松心情。</p>
+                        </div>
+                    `
+                },
+                '4': {
+                    id: '4',
+                    title: '主观题答题技巧分享',
+                    author: '赵六',
+                    date: '2023-11-12',
+                    likes: '145',
+                    content: `
+                        <h2 class="text-[24px] font-bold mb-[16px]">主观题答题技巧分享</h2>
+                        <div class="text-[14px] text-[#9CA3AF] mb-[24px]">
+                            作者：赵六 | 发布于 2023-11-12 | <i class="fa fa-heart text-[#EF4444]"></i> 145赞
+                        </div>
+                        
+                        <div class="prose max-w-none">
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">1. 仔细阅读题目</h3>
+                            <p class="mb-[16px]">在回答主观题之前，一定要仔细阅读题目，理解题目要求，明确答题方向。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">2. 组织答题思路</h3>
+                            <p class="mb-[16px]">在答题之前，先在草稿纸上列出答题要点和思路，确保答案结构清晰，逻辑严密。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">3. 分点作答</h3>
+                            <p class="mb-[16px]">使用数字或字母分点作答，使答案更加清晰易读。每个要点之间要有适当的间隔。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">4. 结合案例或例子</h3>
+                            <p class="mb-[16px]">在回答理论性问题时，可以结合具体的案例或例子，使答案更加生动和有说服力。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">5. 注意语言表达</h3>
+                            <p class="mb-[16px]">使用专业术语和规范的语言表达，避免使用口语化的表达。注意语法和标点的正确使用。</p>
+                        </div>
+                    `
+                },
+                '5': {
+                    id: '5',
+                    title: '记忆宫殿学习法应用',
+                    author: '孙七',
+                    date: '2023-11-10',
+                    likes: '203',
+                    content: `
+                        <h2 class="text-[24px] font-bold mb-[16px]">记忆宫殿学习法应用</h2>
+                        <div class="text-[14px] text-[#9CA3AF] mb-[24px]">
+                            作者：孙七 | 发布于 2023-11-10 | <i class="fa fa-heart text-[#EF4444]"></i> 203赞
+                        </div>
+                        
+                        <div class="prose max-w-none">
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">1. 什么是记忆宫殿</h3>
+                            <p class="mb-[16px]">记忆宫殿是一种通过将需要记忆的信息与熟悉的空间位置联系起来的记忆方法。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">2. 如何创建记忆宫殿</h3>
+                            <p class="mb-[16px]">选择一个熟悉的空间，如自己的房间，将需要记忆的信息与房间中的物品联系起来。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">3. 记忆宫殿的应用</h3>
+                            <p class="mb-[16px]">记忆宫殿可以用于记忆单词、公式、历史事件等各种信息。通过将信息与空间位置联系起来，可以提高记忆效率和准确性。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">4. 记忆宫殿的练习</h3>
+                            <p class="mb-[16px]">通过不断练习，可以提高记忆宫殿的使用效率。建议从简单的信息开始练习，逐渐增加难度。</p>
+                            
+                            <h3 class="text-[18px] font-medium mt-[24px] mb-[12px]">5. 记忆宫殿的注意事项</h3>
+                            <p class="mb-[16px]">创建记忆宫殿时，要选择熟悉的空间，使用生动的图像和情感联系，定期复习和巩固记忆。</p>
+                        </div>
+                    `
+                }
+            };
+            
+            // 获取攻略内容
+            const guide = guides[guideId] || guides['1'];
+            
+            // 加载攻略内容到页面
+            const guideDetailElement = document.getElementById('guideDetail');
+            guideDetailElement.innerHTML = guide.content;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 隐私设置</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='settings.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">隐私设置</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-save text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 资料可见范围 -->
+        <div class="mt-[16px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">资料可见范围</h2>
+            <div class="bg-white p-[16px]">
+                <div class="mb-[16px]">
+                    <div class="text-[16px] mb-[8px]">个人资料可见范围</div>
+                    <div class="flex gap-[12px]">
+                        <label class="flex items-center gap-[4px] cursor-pointer">
+                            <input type="radio" name="profile-visibility" value="public" checked class="w-[16px] h-[16px] text-[#2563EB]">
+                            <span class="text-[14px]">公开</span>
+                        </label>
+                        <label class="flex items-center gap-[4px] cursor-pointer">
+                            <input type="radio" name="profile-visibility" value="friends" class="w-[16px] h-[16px] text-[#2563EB]">
+                            <span class="text-[14px]">仅好友可见</span>
+                        </label>
+                        <label class="flex items-center gap-[4px] cursor-pointer">
+                            <input type="radio" name="profile-visibility" value="private" class="w-[16px] h-[16px] text-[#2563EB]">
+                            <span class="text-[14px]">仅自己可见</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-[16px] mb-[8px]">学习记录可见范围</div>
+                    <div class="flex gap-[12px]">
+                        <label class="flex items-center gap-[4px] cursor-pointer">
+                            <input type="radio" name="record-visibility" value="public" class="w-[16px] h-[16px] text-[#2563EB]">
+                            <span class="text-[14px]">公开</span>
+                        </label>
+                        <label class="flex items-center gap-[4px] cursor-pointer">
+                            <input type="radio" name="record-visibility" value="friends" checked class="w-[16px] h-[16px] text-[#2563EB]">
+                            <span class="text-[14px]">仅好友可见</span>
+                        </label>
+                        <label class="flex items-center gap-[4px] cursor-pointer">
+                            <input type="radio" name="record-visibility" value="private" class="w-[16px] h-[16px] text-[#2563EB]">
+                            <span class="text-[14px]">仅自己可见</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 个人信息展示 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">个人信息展示</h2>
+            <div class="bg-white p-[16px]">
+                <div class="space-y-[16px]">
+                    <div class="flex items-center justify-between">
+                        <div class="text-[16px]">性别</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="show-gender" class="sr-only" checked>
+                            <label for="show-gender" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="text-[16px]">学校</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="show-school" class="sr-only" checked>
+                            <label for="show-school" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="text-[16px]">专业</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="show-major" class="sr-only" checked>
+                            <label for="show-major" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="text-[16px]">年级</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="show-grade" class="sr-only" checked>
+                            <label for="show-grade" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 防骚扰设置 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">防骚扰设置</h2>
+            <div class="bg-white p-[16px]">
+                <div class="space-y-[16px]">
+                    <div class="flex items-center justify-between">
+                        <div class="text-[16px]">消息免打扰</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="do-not-disturb" class="sr-only">
+                            <label for="do-not-disturb" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div class="text-[16px]">拒绝陌生人消息</div>
+                        <div class="relative inline-block w-[40px] h-[20px]">
+                            <input type="checkbox" id="reject-strangers" class="sr-only">
+                            <label for="reject-strangers" class="block w-full h-full bg-[#E5E7EB] rounded-full cursor-pointer transition-all duration-200"></label>
+                            <span class="absolute left-[2px] top-[2px] w-[16px] h-[16px] bg-white rounded-full transition-all duration-200 transform"></span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="text-[16px] mb-[8px]">屏蔽关键词</div>
+                        <div class="relative">
+                            <input type="text" id="block-keywords" placeholder="输入关键词，用逗号分隔" class="w-full px-[12px] py-[8px] border border-[#E5E7EB] rounded-[8px] focus:outline-none focus:border-[#2563EB]">
+                            <button class="absolute right-[12px] top-1/2 transform -translate-y-1/2 text-[#9CA3AF]">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <div class="text-[12px] text-[#6B7280] mt-[4px]">已添加关键词：垃圾广告, 诈骗信息</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 隐私协议 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">隐私协议</h2>
+            <div class="bg-white p-[16px]">
+                <div class="flex items-center gap-[12px]">
+                    <div class="text-[14px] text-[#6B7280]">
+                        <input type="checkbox" id="privacy-agreement" class="mr-[4px]">
+                        <label for="privacy-agreement">我已阅读并同意</label>
+                        <a href="privacy-policy.html" class="text-[#2563EB]">《隐私政策》</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 隐私设置功能 -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 保存按钮点击事件
+            const saveBtn = document.querySelector('header button:last-child');
+            saveBtn.addEventListener('click', function() {
+                // 获取所有设置值
+                const profileVisibility = document.querySelector('input[name="profile-visibility"]:checked').value;
+                const recordVisibility = document.querySelector('input[name="record-visibility"]:checked').value;
+                const showGender = document.getElementById('show-gender').checked;
+                const showSchool = document.getElementById('show-school').checked;
+                const showMajor = document.getElementById('show-major').checked;
+                const showGrade = document.getElementById('show-grade').checked;
+                const doNotDisturb = document.getElementById('do-not-disturb').checked;
+                const rejectStrangers = document.getElementById('reject-strangers').checked;
+                const blockKeywords = document.getElementById('block-keywords').value;
+                const privacyAgreement = document.getElementById('privacy-agreement').checked;
+                
+                // 保存到localStorage
+                const privacySettings = {
+                    profileVisibility,
+                    recordVisibility,
+                    showGender,
+                    showSchool,
+                    showMajor,
+                    showGrade,
+                    doNotDisturb,
+                    rejectStrangers,
+                    blockKeywords,
+                    privacyAgreement
+                };
+                localStorage.setItem('privacySettings', JSON.stringify(privacySettings));
+                
+                // 显示保存成功提示
+                alert('保存成功');
+            });
+            
+            // 从localStorage加载设置
+            const savedSettings = localStorage.getItem('privacySettings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                
+                // 设置单选按钮
+                document.querySelector(`input[name="profile-visibility"][value="${settings.profileVisibility}"]`).checked = true;
+                document.querySelector(`input[name="record-visibility"][value="${settings.recordVisibility}"]`).checked = true;
+                
+                // 设置复选框
+                document.getElementById('show-gender').checked = settings.showGender;
+                document.getElementById('show-school').checked = settings.showSchool;
+                document.getElementById('show-major').checked = settings.showMajor;
+                document.getElementById('show-grade').checked = settings.showGrade;
+                document.getElementById('do-not-disturb').checked = settings.doNotDisturb;
+                document.getElementById('reject-strangers').checked = settings.rejectStrangers;
+                document.getElementById('privacy-agreement').checked = settings.privacyAgreement;
+                
+                // 设置文本框
+                document.getElementById('block-keywords').value = settings.blockKeywords;
+            }
+        });
+    </script>
+</body>
+</html>

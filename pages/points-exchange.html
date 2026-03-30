@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 积分兑换</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='task-center.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">积分兑换</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-history text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 积分概览 -->
+        <div class="card mt-[16px]">
+            <div class="text-center">
+                <h2 class="text-[16px] font-medium mb-[4px]">我的积分余额</h2>
+                <p class="text-[40px] font-bold text-[#2563EB]" id="points-balance">500</p>
+                <p class="text-[12px] text-[#6B7280] mt-[2px]">积分可用于兑换学习资源和权益</p>
+            </div>
+            <div class="flex gap-[12px] mt-[16px]">
+                <button class="flex-1 py-[8px] bg-[#E5E7EB] text-[#4B5563] rounded-full text-[14px]" onclick="window.location.href='exchange-tasks.html'">
+                    <i class="fa fa-gift mr-[4px]"></i>立即兑换
+                </button>
+                <button class="flex-1 py-[8px] bg-[#2563EB] text-white rounded-full text-[14px]" onclick="window.location.href='task-center.html'">
+                    <i class="fa fa-tasks mr-[4px]"></i>赚取积分
+                </button>
+            </div>
+        </div>
+        
+        <!-- 积分记录 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">积分记录</h2>
+            
+            <!-- 记录分类标签 -->
+            <div class="flex gap-[8px] mb-[12px]">
+                <button class="record-tab active px-[16px] py-[4px] bg-[#2563EB] text-white rounded-full text-[14px]">全部</button>
+                <button class="record-tab px-[16px] py-[4px] bg-[#F3F4F6] text-[#6B7280] rounded-full text-[14px]">获取</button>
+                <button class="record-tab px-[16px] py-[4px] bg-[#F3F4F6] text-[#6B7280] rounded-full text-[14px]">消耗</button>
+            </div>
+            
+            <!-- 记录列表 -->
+            <div class="card">
+                <div class="space-y-[12px] px-[12px] py-[8px]">
+                    <!-- 记录项1 -->
+                    <div class="flex items-center justify-between py-[4px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[36px] h-[36px] bg-[#D1FAE5] rounded-full flex items-center justify-center">
+                                <i class="fa fa-calendar-check text-[#10B981]"></i>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">每日签到</p>
+                                <p class="text-[12px] text-[#6B7280]">2023-10-15 08:30</p>
+                            </div>
+                        </div>
+                        <div class="text-[14px] font-medium text-[#10B981]">+10</div>
+                    </div>
+                    
+                    <!-- 记录项2 -->
+                    <div class="flex items-center justify-between py-[4px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[36px] h-[36px] bg-[#D1FAE5] rounded-full flex items-center justify-center">
+                                <i class="fa fa-upload text-[#10B981]"></i>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">上传学习资料</p>
+                                <p class="text-[12px] text-[#6B7280]">2023-10-14 14:20</p>
+                            </div>
+                        </div>
+                        <div class="text-[14px] font-medium text-[#10B981]">+200</div>
+                    </div>
+                    
+                    <!-- 记录项3 -->
+                    <div class="flex items-center justify-between py-[4px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[36px] h-[36px] bg-[#FEE2E2] rounded-full flex items-center justify-center">
+                                <i class="fa fa-shopping-cart text-[#EF4444]"></i>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">兑换学习套餐</p>
+                                <p class="text-[12px] text-[#6B7280]">2023-10-13 16:45</p>
+                            </div>
+                        </div>
+                        <div class="text-[14px] font-medium text-[#EF4444]">-200</div>
+                    </div>
+                    
+                    <!-- 记录项4 -->
+                    <div class="flex items-center justify-between py-[4px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[36px] h-[36px] bg-[#D1FAE5] rounded-full flex items-center justify-center">
+                                <i class="fa fa-share-alt text-[#10B981]"></i>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">分享学习资料</p>
+                                <p class="text-[12px] text-[#6B7280]">2023-10-12 11:15</p>
+                            </div>
+                        </div>
+                        <div class="text-[14px] font-medium text-[#10B981]">+100</div>
+                    </div>
+                    
+                    <!-- 记录项5 -->
+                    <div class="flex items-center justify-between py-[4px]">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[36px] h-[36px] bg-[#D1FAE5] rounded-full flex items-center justify-center">
+                                <i class="fa fa-user-plus text-[#10B981]"></i>
+                            </div>
+                            <div>
+                                <p class="text-[14px]">完成新手任务</p>
+                                <p class="text-[12px] text-[#6B7280]">2023-10-11 09:30</p>
+                            </div>
+                        </div>
+                        <div class="text-[14px] font-medium text-[#10B981]">+400</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 兑换规则 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">积分兑换规则</h2>
+            <div class="card">
+                <div class="space-y-[8px] px-[12px] py-[8px]">
+                    <div class="flex items-start gap-[12px]">
+                        <i class="fa fa-circle text-[8px] text-[#6B7280] mt-[6px]"></i>
+                        <div class="flex-1">
+                            <h3 class="text-[14px] font-medium mb-[2px]">积分获取</h3>
+                            <p class="text-[12px] text-[#6B7280]">通过完成日常任务、上传资料、邀请好友等方式获取积分</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-[12px]">
+                        <i class="fa fa-circle text-[8px] text-[#6B7280] mt-[6px]"></i>
+                        <div class="flex-1">
+                            <h3 class="text-[14px] font-medium mb-[2px]">积分有效期</h3>
+                            <p class="text-[12px] text-[#6B7280]">积分有效期为1年，到期未使用的积分将自动清零</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-[12px]">
+                        <i class="fa fa-circle text-[8px] text-[#6B7280] mt-[6px]"></i>
+                        <div class="flex-1">
+                            <h3 class="text-[14px] font-medium mb-[2px]">积分兑换</h3>
+                            <p class="text-[12px] text-[#6B7280]">积分可用于兑换学习资料、VIP会员、学长答疑等权益</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-[12px]">
+                        <i class="fa fa-circle text-[8px] text-[#6B7280] mt-[6px]"></i>
+                        <div class="flex-1">
+                            <h3 class="text-[14px] font-medium mb-[2px]">兑换须知</h3>
+                            <p class="text-[12px] text-[#6B7280]">兑换后积分不退还，权益一经发放不可撤销</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 常见问题 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">常见问题</h2>
+            <div class="card">
+                <div class="space-y-[8px] px-[12px] py-[8px]">
+                    <div class="faq-item">
+                        <div class="flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+                            <h3 class="text-[14px] font-medium">如何快速获取积分？</h3>
+                            <i class="fa fa-chevron-down text-[16px] text-[#6B7280]"></i>
+                        </div>
+                        <div class="faq-content mt-[4px] hidden">
+                            <p class="text-[12px] text-[#6B7280]">可以通过每日签到、上传优质学习资料、邀请好友注册、分享资料等方式快速获取积分。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+                            <h3 class="text-[14px] font-medium">积分兑换的权益如何使用？</h3>
+                            <i class="fa fa-chevron-down text-[16px] text-[#6B7280]"></i>
+                        </div>
+                        <div class="faq-content mt-[4px] hidden">
+                            <p class="text-[12px] text-[#6B7280]">兑换成功后，对应权益会自动发放到您的账户，您可以在个人中心或相应功能页面查看和使用。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+                            <h3 class="text-[14px] font-medium">积分可以转让给他人吗？</h3>
+                            <i class="fa fa-chevron-down text-[16px] text-[#6B7280]"></i>
+                        </div>
+                        <div class="faq-content mt-[4px] hidden">
+                            <p class="text-[12px] text-[#6B7280]">目前积分暂不支持转让给其他用户，仅限本人使用。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+                            <h3 class="text-[14px] font-medium">积分兑换后可以退款吗？</h3>
+                            <i class="fa fa-chevron-down text-[16px] text-[#6B7280]"></i>
+                        </div>
+                        <div class="faq-content mt-[4px] hidden">
+                            <p class="text-[12px] text-[#6B7280]">积分兑换属于虚拟商品交易，一旦兑换成功，积分不退还，权益不支持退款或更换。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部Tab栏 -->
+    <footer>
+        <div class="tabbar">
+            <!-- 首页 -->
+            <div class="tabbar-item inactive" data-page="home">
+                <i class="fa fa-home text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">首页</span>
+            </div>
+            
+            <!-- 找资料 -->
+            <div class="tabbar-item inactive" data-page="search">
+                <i class="fa fa-search text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">找资料</span>
+            </div>
+            
+            <!-- 互助 -->
+            <div class="tabbar-item inactive" data-page="exchange">
+                <i class="fa fa-exchange-alt text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">互助</span>
+            </div>
+            
+            <!-- 备考 -->
+            <div class="tabbar-item inactive" data-page="exam">
+                <i class="fa fa-pen-fancy text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">备考</span>
+            </div>
+            
+            <!-- 我的 -->
+            <div class="tabbar-item active" data-page="profile">
+                <i class="fa fa-user text-[20px]"></i>
+                <span class="text-[12px] mt-[2px]">我的</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页面特定JavaScript -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载用户积分
+            function loadUserPoints() {
+                const savedPoints = localStorage.getItem('userPoints');
+                if (savedPoints) {
+                    document.getElementById('points-balance').textContent = savedPoints;
+                }
+            }
+            
+            // FAQ切换功能
+            window.toggleFaq = function(element) {
+                const content = element.nextElementSibling;
+                const icon = element.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            };
+            
+            // 记录标签切换功能
+            const recordTabs = document.querySelectorAll('.record-tab');
+            recordTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签的active类
+                    recordTabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.classList.remove('bg-[#2563EB]');
+                        t.classList.remove('text-white');
+                        t.classList.add('bg-[#F3F4F6]');
+                        t.classList.add('text-[#6B7280]');
+                    });
+                    
+                    // 为当前标签添加active类
+                    this.classList.add('active');
+                    this.classList.add('bg-[#2563EB]');
+                    this.classList.add('text-white');
+                    this.classList.remove('bg-[#F3F4F6]');
+                    this.classList.remove('text-[#6B7280]');
+                    
+                    // 根据选择的标签筛选记录
+                    const tabType = this.textContent;
+                    console.log(`切换到${tabType}记录`);
+                    // 这里可以添加记录筛选逻辑
+                });
+            });
+            
+            // 初始化页面
+            loadUserPoints();
+        });
+    </script>
+</body>
+</html>

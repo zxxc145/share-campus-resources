@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 账户设置</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='settings.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">账户设置</h1>
+        </div>
+        <button class="text-[#4B5563]">
+            <i class="fa fa-save text-[20px]"></i>
+        </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 修改头像 -->
+        <div class="bg-white p-[16px] mt-[16px]">
+            <div class="flex items-center justify-center">
+                <div class="relative">
+                    <div class="w-[100px] h-[100px] bg-[#E5E7EB] rounded-full flex items-center justify-center overflow-hidden">
+                        <img id="avatar" src="../assets/images/avatar-default.png" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <input type="file" id="avatar-upload" class="sr-only">
+                    <label for="avatar-upload" class="absolute bottom-[0] right-[0] w-[32px] h-[32px] bg-[#2563EB] rounded-full flex items-center justify-center cursor-pointer">
+                        <i class="fa fa-camera text-white"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="text-center mt-[12px]">
+                <p class="text-[12px] text-[#6B7280]">点击相机图标更换头像</p>
+            </div>
+        </div>
+        
+        <!-- 基本信息 -->
+        <div class="space-y-[1px] mt-[16px]">
+            <div class="bg-white p-[16px]">
+                <div class="flex items-center justify-between">
+                    <div class="text-[16px]">昵称</div>
+                    <div class="flex items-center gap-[8px]">
+                        <input type="text" id="nickname" value="校园学习者" class="text-[16px] text-[#6B7280] text-right focus:outline-none border-none bg-transparent">
+                        <i class="fa fa-pen text-[#9CA3AF]"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px]">
+                <div class="flex items-center justify-between">
+                    <div class="text-[16px]">手机号</div>
+                    <div class="flex items-center gap-[8px]">
+                        <span class="text-[16px] text-[#6B7280]">138****1234</span>
+                        <button class="text-[12px] text-[#2563EB]" onclick="changePhone()">修改</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px]">
+                <div class="flex items-center justify-between">
+                    <div class="text-[16px]">密码</div>
+                    <div class="flex items-center gap-[8px]">
+                        <span class="text-[16px] text-[#6B7280]">••••••••</span>
+                        <button class="text-[12px] text-[#2563EB]" onclick="changePassword()">修改</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-[16px]">
+                <div class="flex items-center justify-between">
+                    <div class="text-[16px]">绑定教务系统</div>
+                    <div class="flex items-center gap-[8px]">
+                        <span class="text-[16px] text-[#9CA3AF]">未绑定</span>
+                        <button class="text-[12px] text-[#2563EB]" onclick="bindEduSystem()">立即绑定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 账户安全 -->
+        <div class="mt-[24px]">
+            <h2 class="text-[18px] font-medium mb-[12px]">账户安全</h2>
+            <div class="space-y-[1px]">
+                <div class="bg-white p-[16px]">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[24px] h-[24px] bg-[#EFF6FF] rounded-full flex items-center justify-center">
+                                <i class="fa fa-shield-alt text-[#2563EB]"></i>
+                            </div>
+                            <span class="text-[16px]">登录设备管理</span>
+                        </div>
+                        <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-[16px]">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[24px] h-[24px] bg-[#FEF3C7] rounded-full flex items-center justify-center">
+                                <i class="fa fa-key text-[#F59E0B]"></i>
+                            </div>
+                            <span class="text-[16px]">第三方登录</span>
+                        </div>
+                        <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-[16px]">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-[12px]">
+                            <div class="w-[24px] h-[24px] bg-[#FEE2E2] rounded-full flex items-center justify-center">
+                                <i class="fa fa-exclamation-triangle text-[#EF4444]"></i>
+                            </div>
+                            <span class="text-[16px]">注销账户</span>
+                        </div>
+                        <i class="fa fa-chevron-right text-[#9CA3AF]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 账户设置功能 -->
+    <script>
+        // 文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 头像上传功能
+            const avatarUpload = document.getElementById('avatar-upload');
+            const avatar = document.getElementById('avatar');
+            
+            avatarUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        avatar.src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // 保存按钮点击事件
+            const saveBtn = document.querySelector('header button:last-child');
+            saveBtn.addEventListener('click', function() {
+                // 获取所有输入值
+                const nickname = document.getElementById('nickname').value;
+                
+                // 保存到localStorage
+                localStorage.setItem('userNickname', nickname);
+                
+                // 显示保存成功提示
+                alert('保存成功');
+            });
+            
+            // 从localStorage加载用户数据
+            const savedNickname = localStorage.getItem('userNickname');
+            if (savedNickname) {
+                document.getElementById('nickname').value = savedNickname;
+            }
+        });
+        
+        // 修改手机号功能
+        function changePhone() {
+            const newPhone = prompt('请输入新的手机号：');
+            if (newPhone) {
+                // 这里可以添加手机号验证逻辑
+                alert('手机号修改成功');
+            }
+        }
+        
+        // 修改密码功能
+        function changePassword() {
+            alert('修改密码功能已触发，实际应用中可以跳转到密码修改页面');
+        }
+        
+        // 绑定教务系统功能
+        function bindEduSystem() {
+            alert('绑定教务系统功能已触发，实际应用中可以跳转到教务系统绑定页面');
+        }
+    </script>
+</body>
+</html>

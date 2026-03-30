@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智享书途 - 联系客服</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 全局样式 -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-[#F3F4F6] min-h-screen">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 h-[60px] bg-white shadow-sm z-10 flex items-center justify-between px-[16px]">
+        <div class="flex items-center gap-[8px]">
+            <button class="back-btn" onclick="window.location.href='settings.html'">
+                <i class="fa fa-arrow-left text-[20px]"></i>
+            </button>
+            <h1 class="text-[18px] font-medium">联系客服</h1>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-[60px] pb-[60px] container mx-auto px-[16px]">
+        <!-- 客服联系方式 -->
+        <div class="bg-white p-[16px] mt-[16px]">
+            <h2 class="text-[18px] font-medium mb-[16px]">客服联系方式</h2>
+            <div class="grid grid-cols-2 gap-[16px]">
+                <!-- 在线客服 -->
+                <div class="flex flex-col items-center justify-center p-[16px] bg-[#EFF6FF] rounded-[8px]">
+                    <div class="w-[48px] h-[48px] bg-[#2563EB] rounded-full flex items-center justify-center mb-[8px]">
+                        <i class="fa fa-comment-dots text-white text-[24px]"></i>
+                    </div>
+                    <h3 class="text-[14px] font-medium mb-[4px]">在线客服</h3>
+                    <p class="text-[12px] text-[#6B7280]">工作日 9:00-21:00</p>
+                    <button class="mt-[8px] px-[12px] py-[4px] bg-[#2563EB] text-white text-[12px] rounded-[4px]">
+                        立即咨询
+                    </button>
+                </div>
+                
+                <!-- 电话客服 -->
+                <div class="flex flex-col items-center justify-center p-[16px] bg-[#D1FAE5] rounded-[8px]">
+                    <div class="w-[48px] h-[48px] bg-[#10B981] rounded-full flex items-center justify-center mb-[8px]">
+                        <i class="fa fa-phone text-white text-[24px]"></i>
+                    </div>
+                    <h3 class="text-[14px] font-medium mb-[4px]">电话客服</h3>
+                    <p class="text-[12px] text-[#6B7280]">400-123-4567</p>
+                    <p class="text-[12px] text-[#6B7280]">工作日 9:00-18:00</p>
+                </div>
+                
+                <!-- 邮箱客服 -->
+                <div class="flex flex-col items-center justify-center p-[16px] bg-[#FEF3C7] rounded-[8px]">
+                    <div class="w-[48px] h-[48px] bg-[#F59E0B] rounded-full flex items-center justify-center mb-[8px]">
+                        <i class="fa fa-envelope text-white text-[24px]"></i>
+                    </div>
+                    <h3 class="text-[14px] font-medium mb-[4px]">邮箱客服</h3>
+                    <p class="text-[12px] text-[#6B7280] text-center">support@zhixiangshutun.com</p>
+                    <button class="mt-[8px] px-[12px] py-[4px] bg-[#F59E0B] text-white text-[12px] rounded-[4px]">
+                        发送邮件
+                    </button>
+                </div>
+                
+                <!-- 微信客服 -->
+                <div class="flex flex-col items-center justify-center p-[16px] bg-[#FEE2E2] rounded-[8px]">
+                    <div class="w-[48px] h-[48px] bg-[#EF4444] rounded-full flex items-center justify-center mb-[8px]">
+                        <i class="fa fa-weixin text-white text-[24px]"></i>
+                    </div>
+                    <h3 class="text-[14px] font-medium mb-[4px]">微信客服</h3>
+                    <p class="text-[12px] text-[#6B7280]">zhixiangshutun</p>
+                    <div class="w-[80px] h-[80px] bg-[#E5E7EB] mt-[8px]"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 问题反馈 -->
+        <div class="bg-white p-[16px] mt-[16px]">
+            <h2 class="text-[18px] font-medium mb-[16px]">问题反馈</h2>
+            <form id="feedback-form" class="space-y-[16px]">
+                <div>
+                    <label class="block text-[14px] mb-[8px]">反馈类型</label>
+                    <select class="w-full p-[8px] border border-[#E5E7EB] rounded-[4px]">
+                        <option>账户问题</option>
+                        <option>资料问题</option>
+                        <option>积分问题</option>
+                        <option>功能建议</option>
+                        <option>其他问题</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-[14px] mb-[8px]">问题描述</label>
+                    <textarea class="w-full p-[8px] border border-[#E5E7EB] rounded-[4px] resize-none" rows="5" placeholder="请详细描述您遇到的问题..."></textarea>
+                </div>
+                
+                <div>
+                    <label class="block text-[14px] mb-[8px]">联系方式</label>
+                    <input type="text" class="w-full p-[8px] border border-[#E5E7EB] rounded-[4px]" placeholder="请留下您的手机号或邮箱">
+                </div>
+                
+                <div>
+                    <label class="block text-[14px] mb-[8px]">上传图片（选填）</label>
+                    <div class="border-2 border-dashed border-[#E5E7EB] rounded-[8px] p-[16px] text-center">
+                        <i class="fa fa-image text-[32px] text-[#9CA3AF] mb-[8px]"></i>
+                        <p class="text-[14px] text-[#6B7280]">点击或拖拽图片到此处上传</p>
+                        <input type="file" class="hidden" accept="image/*">
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-full py-[10px] bg-[#2563EB] text-white rounded-[4px]">
+                    提交反馈
+                </button>
+            </form>
+        </div>
+        
+        <!-- 常见问题FAQ -->
+        <div class="bg-white p-[16px] mt-[16px]">
+            <h2 class="text-[18px] font-medium mb-[16px]">常见问题</h2>
+            <div class="space-y-[8px]">
+                <!-- FAQ项目 -->
+                <div class="faq-item border-b border-[#E5E7EB] pb-[8px]">
+                    <div class="faq-question flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <span class="text-[14px] font-medium">如何获得积分？</span>
+                        <i class="fa fa-chevron-down text-[#9CA3AF]"></i>
+                    </div>
+                    <div class="faq-answer text-[14px] text-[#4B5563] mt-[8px] hidden">
+                        您可以通过以下方式获得积分：
+                        <ul class="list-disc list-inside ml-[8px] mt-[4px]">
+                            <li>完成新手任务</li>
+                            <li>每日签到</li>
+                            <li>上传学习资料</li>
+                            <li>邀请好友注册</li>
+                            <li>参与平台活动</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="faq-item border-b border-[#E5E7EB] pb-[8px]">
+                    <div class="faq-question flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <span class="text-[14px] font-medium">如何上传学习资料？</span>
+                        <i class="fa fa-chevron-down text-[#9CA3AF]"></i>
+                    </div>
+                    <div class="faq-answer text-[14px] text-[#4B5563] mt-[8px] hidden">
+                        您可以通过以下步骤上传学习资料：
+                        <ol class="list-decimal list-inside ml-[8px] mt-[4px]">
+                            <li>进入"发布资料"页面</li>
+                            <li>选择资料类型和分类</li>
+                            <li>填写资料标题和描述</li>
+                            <li>上传资料文件</li>
+                            <li>设置积分价格（可选）</li>
+                            <li>提交审核</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="faq-item border-b border-[#E5E7EB] pb-[8px]">
+                    <div class="faq-question flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <span class="text-[14px] font-medium">资料审核需要多久？</span>
+                        <i class="fa fa-chevron-down text-[#9CA3AF]"></i>
+                    </div>
+                    <div class="faq-answer text-[14px] text-[#4B5563] mt-[8px] hidden">
+                        资料审核一般需要1-2个工作日，审核通过后您的资料将在平台上显示。
+                        审核不通过的资料会有相应的拒绝理由，您可以根据理由修改后重新提交。
+                    </div>
+                </div>
+                
+                <div class="faq-item border-b border-[#E5E7EB] pb-[8px]">
+                    <div class="faq-question flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <span class="text-[14px] font-medium">如何兑换学习资料？</span>
+                        <i class="fa fa-chevron-down text-[#9CA3AF]"></i>
+                    </div>
+                    <div class="faq-answer text-[14px] text-[#4B5563] mt-[8px] hidden">
+                        您可以通过以下步骤兑换学习资料：
+                        <ol class="list-decimal list-inside ml-[8px] mt-[4px]">
+                            <li>找到您需要的学习资料</li>
+                            <li>点击"兑换"按钮</li>
+                            <li>确认扣除相应积分</li>
+                            <li>兑换成功后即可下载</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="faq-item pb-[8px]">
+                    <div class="faq-question flex items-center justify-between cursor-pointer" onclick="toggleFAQ(this)">
+                        <span class="text-[14px] font-medium">如何修改密码？</span>
+                        <i class="fa fa-chevron-down text-[#9CA3AF]"></i>
+                    </div>
+                    <div class="faq-answer text-[14px] text-[#4B5563] mt-[8px] hidden">
+                        您可以通过以下步骤修改密码：
+                        <ol class="list-decimal list-inside ml-[8px] mt-[4px]">
+                            <li>进入"账户设置"页面</li>
+                            <li>点击"修改密码"选项</li>
+                            <li>输入原密码和新密码</li>
+                            <li>确认修改</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 全局JavaScript -->
+    <script src="../assets/js/app.js"></script>
+    
+    <!-- 页面特定JavaScript -->
+    <script>
+        // FAQ折叠功能
+        function toggleFAQ(element) {
+            const question = element;
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            // 切换答案显示/隐藏
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                answer.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+        
+        // 表单提交功能
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('反馈提交成功！我们将尽快处理您的问题。');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
